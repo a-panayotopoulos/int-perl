@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use Module::CoreList;
+use List::Util ();
+
+my @modules = sort keys( %{$Module::CoreList::version{5.014002}} );
+
+my $wid = List::Util::reduce { $a > length( $b ) ? $a : length( $b ) } 0, @modules;
+
+printf "%${wid}s | %s\n", "MODULE", "FIRST RELEASE";
+printf "%s-+--------------\n", '-' x $wid;
+printf "%${wid}s | %s\n", $_, Module::CoreList->first_release( $_ ) foreach @modules;
