@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use Cwd;
+use File::Spec;
+
+my $cwd = getcwd;
+opendir( my $dir, File::Spec->curdir() ) or die $!;
+
+while ( readdir( $dir ) ) {
+  say File::Spec->catdir( $cwd, $_ ) unless /^\.+$/;
+}
+
+closedir( $dir );
