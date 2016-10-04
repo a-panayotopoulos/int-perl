@@ -1,0 +1,9 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use Cwd;
+use File::Spec;
+use File::Slurp;
+
+say File::Spec->catdir( getcwd, $_ ) foreach read_dir( File::Spec->curdir() );
