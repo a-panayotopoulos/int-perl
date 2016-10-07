@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use Business::ISBN;
-use lib "/home/mdw/perl5/lib/perl5/";
 
 my $bookisbn = 9781449393090;
 
