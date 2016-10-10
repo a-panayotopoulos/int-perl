@@ -1,0 +1,21 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use Business::ISBN;
+
+use constant DEFAULT_ISBN => '9781449393090';
+
+my $strISBN = $ARGV[0] // DEFAULT_ISBN;
+my $isbn = Business::ISBN->new($strISBN) or die "Not a well-formed ISBN '$strISBN'\n";
+
+print "ISBN: $strISBN ";
+
+if ( $isbn->is_valid ) {
+  say "is valid";
+  say "Group code: " . $isbn->group_code;
+  say "Publisher code: " . $isbn->publisher_code;
+}
+else {
+  say "is not valid";
+}
