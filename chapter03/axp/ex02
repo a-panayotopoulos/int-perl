@@ -1,0 +1,25 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+use constant OSDIRS => { 'linux' => '/etc', 'MSWin32' => 'C:\\Windows' };
+
+my $dir = OSDIRS->{$^O} or die "Not a known operating system $^O\n";
+
+while ( 1 ) {
+	say "\nGimme a regex, or enter to exit:";
+	chomp( my $input = <STDIN> );
+	last if ( $input eq '' );
+	opendir( my $fh, $dir ) or die $!;
+	my @alldirs = readdir( $fh );
+	close $fh;
+	eval {
+		my @filterdirs = grep { /^$input$/ } @alldirs;
+		say @filterdirs ? join( "\n", @filterdirs ) : "No matches for that regex";
+	};
+	if ( $@ ) {
+		say "Bad redex! No cookie.";
+		next;
+	};	
+}
