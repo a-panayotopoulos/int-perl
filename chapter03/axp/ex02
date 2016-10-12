@@ -2,6 +2,7 @@
 
 use 5.014;
 use warnings;
+use File::Slurp qw( read_dir );
 
 use constant OSDIRS => { 'linux' => '/etc', 'MSWin32' => 'C:\\Windows' };
 
@@ -11,15 +12,8 @@ while ( 1 ) {
 	say "\nGimme a regex, or enter to exit:";
 	chomp( my $input = <STDIN> );
 	last if ( $input eq '' );
-	opendir( my $fh, $dir ) or die $!;
-	my @alldirs = readdir( $fh );
-	close $fh;
 	eval {
-		my @filterdirs = grep { /^$input$/ } @alldirs;
-		say @filterdirs ? join( "\n", @filterdirs ) : "No matches for that regex";
+		say join( "\n", grep { /^$input$/ } read_dir( $dir ) ) || "No files match that regex";
 	};
-	if ( $@ ) {
-		say "Bad redex! No cookie.";
-		next;
-	};	
+	say "Bad redex! No cookie." if ( $@ );
 }
