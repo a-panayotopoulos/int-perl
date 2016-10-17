@@ -9,7 +9,7 @@ chdir $directory;
 
 
 while (1) {
-	print "Enter a regular expressio(blank to ext):\n";
+	print "Enter a regular expression(blank to ext):\n";
 	chomp( my $regex = <STDIN> );
 	
 	if($regex eq "") { last; }
