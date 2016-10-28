@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+my %total_bytes;
+
+while (<>) {
+  next if /^#/;
+  my ($source, $destination, $bytes) = split;
+  $total_bytes{$source}{$destination} += $bytes;
+}
+
+foreach my $source ( sort keys %total_bytes ) {
+	say $source;
+	
+	foreach my $dest ( sort keys %{ $total_bytes{$source} } ) {
+		say "  $dest $total_bytes{$source}{$dest}";
+	}
+}

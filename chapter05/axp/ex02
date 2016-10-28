@@ -1,0 +1,17 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use CLDR::Number;
+
+my %total_bytes;
+
+while (<>) {
+  next if /^#/;
+  my ($source, $destination, $bytes) = split;
+  $total_bytes{"$source => $destination"} += $bytes;
+}
+
+my $fmt = CLDR::Number->new( locale => 'en' )->decimal_formatter;
+
+say "$_: ", $fmt->format( $total_bytes{$_} ) foreach ( sort { $total_bytes{$b} <=> $total_bytes{$a} } keys %total_bytes );
