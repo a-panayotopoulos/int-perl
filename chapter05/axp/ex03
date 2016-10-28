@@ -6,6 +6,7 @@ use warnings;
 my %total_bytes;
 
 while (<>) {
+  next if /^#/;
   my ($source, $destination, $bytes) = split;
   $total_bytes{$source}{$destination} += $bytes;
 }
