@@ -1,0 +1,27 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+my @crew = ({	name => 'Gilligan',
+				hat => 'White',
+				shirt => 'Red',
+				position => 'First Mate' },
+			{	name => 'Skipper',
+				hat => 'Black',
+				shirt => 'Blue',
+				position => 'Captain' },
+			{	name => 'Mr. Howell',
+				hat => 'Yellow',
+				shirt => 'Green',
+				position => 'Passenger' },
+			{	name => 'Mrs. Howell',
+				hat => 'Fancy',
+				shirt => 'Red',
+				position => 'Passenger' });
+
+foreach my $person ( @crew ) {
+	$person->{location} = 'The Island';
+	$person->{location} .= ' Country Club' if ( $person->{name} =~ /^Mrs?. Howell$/ );
+	say "$person->{name} at $person->{location}";
+}
