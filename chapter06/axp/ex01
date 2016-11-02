@@ -1,0 +1,31 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use List::Util qw ( max );
+use Storable qw( nstore retrieve );
+
+my $run = max map { s/\D//gr } glob( "tally*.dat" );
+my %total_bytes;
+
+if ( defined $run ) {
+	%total_bytes = %{ retrieve "tally$run.dat" } or die "Couldn't read from tally file\n";
+}
+
+while (<>) {
+  next if /^#/;
+  my ($source, $destination, $bytes) = split;
+  $total_bytes{$source}{$destination} += $bytes;
+}
+
+foreach my $source ( sort keys %total_bytes ) {
+	say $source;
+	
+	foreach my $dest ( sort keys %{ $total_bytes{$source} } ) {
+		say "  $dest $total_bytes{$source}{$dest}";
+	}
+}
+
+$run++;
+nstore \%total_bytes, "tally${run}.dat" or die "Couldn't write to tally file\n";
+say "\n----------\nStored to tally$run.dat";
