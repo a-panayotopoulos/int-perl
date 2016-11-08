@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use json;
+use JSON;
 
 my %total_bytes;
 my %total_bytes_per_source;
