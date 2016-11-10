@@ -24,11 +24,16 @@ sub rightmost {
 
 	my @pats = @$patterns{ sort keys %$patterns };
 	my $rightmost = -1;
-
-	foreach my $pattern ( @pats ) {
+	my $patname_out = "None!";
+	
+	foreach my $patname ( sort keys %$patterns ) {
+		my $pattern = $patterns->{$patname};
 		my $position = $string =~ m/$pattern/ ? $-[0] : -1;
-		$rightmost = $position if $position > $rightmost;
+		if ( $position > $rightmost ) {
+			$rightmost = $position;
+			$patname_out = $patname;
+		}
 	}
 
-	return $rightmost;
+	return $patname_out;
 }
