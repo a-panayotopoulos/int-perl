@@ -2,6 +2,7 @@
 use utf8;
 use strict;
 use warnings;
+use List::Util qw( reduce );
 
 use v5.12;
 
@@ -20,20 +21,12 @@ say rightmost(
 );	
 	
 sub rightmost {
-	my( $string, $patterns ) = @_;
+	my ( $string, $patterns ) = @_;
 
-	my @pats = @$patterns{ sort keys %$patterns };
-	my $rightmost = -1;
-	my $patname_out = "None!";
-	
-	foreach my $patname ( sort keys %$patterns ) {
-		my $pattern = $patterns->{$patname};
-		my $position = $string =~ m/$pattern/ ? $-[0] : -1;
-		if ( $position > $rightmost ) {
-			$rightmost = $position;
-			$patname_out = $patname;
-		}
-	}
-
-	return $patname_out;
+	return (
+		reduce {
+			my $b_idx = $string =~ m/$patterns->{$b}/ ? $-[0] : -1;
+			$b_idx > $a->{idx} ? { name => $b, idx => $b_idx } : $a
+		} { name => "None", idx => -1 }, sort keys %$patterns
+	)->{name};
 }
