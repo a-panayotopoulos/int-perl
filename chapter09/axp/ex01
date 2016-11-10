@@ -14,19 +14,21 @@ my %patterns = (
   'A Howell' => qr/Mrs?. Howell/,
 );
 
-rightmost( 
-  'There is Mrs. Howell, Ginger, and Gilligan',
-  @patterns{ sort keys %patterns }
+say rightmost(
+	'There is Mrs. Howell, Ginger, and Gilligan',
+	\%patterns
 );	
 	
 sub rightmost {
-  my( $string, @patterns ) = @_;
-  
-  my $rightmost = -1;
-  while( my( $i, $pattern ) = each @patterns ) {
-	my $position = $string =~ m/$pattern/ ? $-[0] : -1;
-	$rightmost = $position if $position > $rightmost;
+	my( $string, $patterns ) = @_;
+
+	my @pats = @$patterns{ sort keys %$patterns };
+	my $rightmost = -1;
+
+	foreach my $pattern ( @pats ) {
+		my $position = $string =~ m/$pattern/ ? $-[0] : -1;
+		$rightmost = $position if $position > $rightmost;
 	}
 
-return $rightmost; 		
+	return $rightmost;
 }
