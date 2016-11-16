@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use Getopt::Std;
+use IO::Scalar;
+use IO::Null;
+use IO::Tee;
+
+my ( $str, %opts );
+
+getopts( "sf:", \%opts );
+
+die "No filename given after -f\n" if exists $opts{f} && !defined $opts{f};
+die "Neither -f nor -s option passed\n" if !%opts;
+
+my $scalar_handle = $opts{s} ? IO::Scalar->new( \$str ) : IO::Null->new;
+my $file_handle = $opts{f} ? IO::File->new( $opts{f}, 'w' ) : IO::Null->new or die "Couldn't write to file: $!\n";
+
+IO::Tee->new( $scalar_handle, $file_handle )->say( scalar localtime );
+
+print $str if $str;
