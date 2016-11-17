@@ -1,0 +1,25 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use Benchmark qw(timethese);
+
+chdir( $ARGV[0] // "~" );
+
+timethese( 5, { naive => \&naive, schwartzian => \&schwartzian } );
+
+sub naive {
+	# Oddly, if we don't assign to an array, it changes the runtime significantly
+	my @sorted = sort { -s $a <=> -s $b } glob '*';
+	return @sorted;
+}
+
+sub schwartzian {
+	my @sorted =
+		map $_->{FNAME},
+		sort { $a->{SIZE} <=> $b->{SIZE} }
+		map { FNAME => $_, SIZE => -s },
+		glob '*';
+	
+	return @sorted;
+}
