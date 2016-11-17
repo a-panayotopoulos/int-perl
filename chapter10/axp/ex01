@@ -1,0 +1,8 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+chdir( $ARGV[0] // "~" );
+my @sorted = sort { -s $a <=> -s $b } glob '*';
+say( "$_\t", -s ) foreach @sorted;
