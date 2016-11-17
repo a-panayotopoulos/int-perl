@@ -2,21 +2,23 @@
 
 use 5.014;
 use warnings;
+use Regexp::Assemble;
 
 my $fname = $ARGV[0] // 'patterns.dat';
 my $finish = $^O eq "MSWin32" ? "<Ctrl>+Z" : "<Ctrl>+D";
 
 open my $file, $fname or die "Couldn't read $fname: $!\n";
-my @pats = map { chomp; qr/$_/ } <$file>;
+my $regex = Regexp::Assemble->new->add( <$file> )->re;
 close $file;
 
-say "Patterns";
-say "--------";
-say foreach @pats;
+# LOL! Look at the regex this prints out for patterns.dat; can you spot the
+# problem? We've rediscovered https://rt.cpan.org/Public/Bug/Display.html?id=74449
+
+say "Resulting pattern";
+say "-----------------";
+say $regex;
 say "\nNow type lines of text; $finish to finish.";
 
 while ( <> ) {
-	foreach my $p ( @pats ) {
-		print "$.\t${^PREMATCH}<<<${^MATCH}>>>${^POSTMATCH}" while ( $_ =~ /$p/g );
-	}
+	print "$.\t${^PREMATCH}<<<${^MATCH}>>>${^POSTMATCH}" while ( $_ =~ /$regex/g );
 }
