@@ -20,5 +20,5 @@ say $regex;
 say "\nNow type lines of text; $finish to finish.";
 
 while ( <> ) {
-	print "$.\t${^PREMATCH}<<<${^MATCH}>>>${^POSTMATCH}" while ( $_ =~ /$regex/g );
+	print "$.\t${^PREMATCH}<<<${^MATCH}>>>${^POSTMATCH}" while ( /$regex/g );
 }

@@ -16,7 +16,7 @@ say foreach @pats;
 say "\nNow type lines of text; $finish to finish.";
 
 while ( <> ) {
-	foreach my $p ( @pats ) {
-		print "$.\t${^PREMATCH}<<<${^MATCH}>>>${^POSTMATCH}" while ( $_ =~ /$p/g );
+	foreach my $pattern ( @pats ) {
+		print "$.\t${^PREMATCH}<<<${^MATCH}>>>${^POSTMATCH}" while ( /$pattern/g );
 	}
 }
