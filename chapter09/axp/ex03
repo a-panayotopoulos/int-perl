@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+my $fname = $ARGV[0] // 'patterns.dat';
+my $finish = $^O eq "MSWin32" ? "<Ctrl>+Z" : "<Ctrl>+D";
+
+open my $file, $fname or die "Couldn't read $fname: $!\n";
+my @pats = map { chomp; qr/$_/ } <$file>;
+close $file;
+
+say "Patterns";
+say "--------";
+say foreach @pats;
+say "\nNow type lines of text; $finish to finish.";
+
+while ( <> ) {
+	foreach my $p ( @pats ) {
+		print "$.\t${^PREMATCH}<<<${^MATCH}>>>${^POSTMATCH}" while ( $_ =~ /$p/g );
+	}
+}
