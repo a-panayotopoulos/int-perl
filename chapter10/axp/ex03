@@ -1,0 +1,10 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+print foreach
+	map $_->[0],
+	sort { $a->[1] cmp $b->[1] }
+	map [ $_, lc s/[^\p{Ll}\p{Lu}]//gr ],
+	<>;
