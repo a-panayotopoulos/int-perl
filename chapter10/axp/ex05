@@ -1,0 +1,51 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use File::Slurp qw( read_dir );
+use File::Basename qw( basename );
+use Cwd qw ( abs_path );
+use File::Spec::Functions qw( catfile );
+
+my $dir = abs_path( $ARGV[0] // '.' );
+dump_data_for_path( basename( $dir ), values data_for_path( $dir, 5 ) );
+
+sub data_for_path {
+	my ( $path, $threshold ) = @_;
+
+	my $data = {};
+
+	my @queue = ( [ $path, 0, $data ] );
+
+	while ( my $next = shift @queue ) {
+		my ( $path, $level, $ref ) = @$next;
+
+		my $basename = basename( $path );
+
+		$ref->{ $basename } = do {
+			if ( -f $path or -l $path ) { undef }
+			else {
+				my $hash = {};
+				if ( $level < $threshold ) {
+					opendir my ($dh), $path;
+					my @new_paths = map { catfile( $path, $_ ) } grep { ! /^\./ } readdir $dh;
+					push @queue, map { [ $_, $level + 1, $hash ] } @new_paths;
+				}
+				$hash;
+			}
+		};
+	}
+
+	$data;
+}
+
+sub dump_data_for_path {
+	my ( $fname, $data, $indent ) = @_;
+	
+	$indent //= "";
+	print "$indent$fname";
+	return say '' if ( !defined $data );
+	return say ", an empty directory" if ( !%$data );
+	say ", with contents:";
+	dump_data_for_path( $_, $data->{ $_ }, "$indent	" ) foreach ( sort keys %$data );
+}
