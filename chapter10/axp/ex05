@@ -42,8 +42,7 @@ sub data_for_path {
 			else {
 				my $hash = {};
 				if ( $level < $threshold ) {
-					my @new_paths = map { catfile( $path, $_ ) } grep /^[^.]/, read_dir $path;
-					push @queue, map { [ $_, $level + 1, $hash ] } @new_paths;
+					push @queue, map { [ $_, $level + 1, $hash ] } map { catfile( $path, $_ ) } grep /^[^.]/, read_dir $path;
 				}
 				$hash;
 			}
