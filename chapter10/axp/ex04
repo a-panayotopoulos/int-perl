@@ -3,10 +3,11 @@
 use 5.014;
 use warnings;
 use File::Slurp qw( read_dir );
-use Data::Dumper;
+use File::Basename qw( basename );
+use Cwd qw ( abs_path );
 
 my $dir = $ARGV[0] // '.';
-dump_data_for_path( data_for_path( $dir ) );
+dump_data_for_path( basename( abs_path( $dir ) ), data_for_path( $dir ) );
 
 sub data_for_path {
 	my $path = shift;
@@ -19,24 +20,12 @@ sub data_for_path {
 }
 
 sub dump_data_for_path {
-	my $data = shift;
-	my $indent = shift // "";
+	my ( $fname, $data, $indent ) = @_;
 	
-	return unless ( defined $data );
-	
-	foreach my $k ( sort keys %$data ) {
-		if ( defined $data->{ $k } ) {
-			if ( %{ $data->{ $k } } ) {
-				say "$indent$k, with contents:";
-			}
-			else {
-				say "$indent$k, an empty directory";
-			}
-		}
-		else {
-			say "$indent$k";
-		}
-		
-		dump_data_for_path( $data->{ $k }, "$indent  " );
-	}
+	$indent //= "";
+	print "$indent$fname";
+	return say '' if ( !defined $data );
+	return say ", an empty directory" if ( !%$data );
+	say ", with contents:";
+	dump_data_for_path( $_, $data->{ $_ }, "$indent  " ) foreach ( sort keys %$data );
 }
