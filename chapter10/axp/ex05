@@ -4,8 +4,8 @@ use 5.014;
 use warnings;
 use File::Slurp qw( read_dir );
 use File::Basename qw( basename );
-use Cwd qw ( abs_path );
 use File::Spec::Functions qw( catfile );
+use Cwd qw ( abs_path );
 use Getopt::Std;
 
 my %opts;
@@ -24,7 +24,6 @@ sub data_for_path {
 	my ( $path, $threshold, $method ) = @_;
 
 	my $data = {};
-
 	my @queue = ( [ $path, 0, $data ] );
 	
 	my $get_next = {
@@ -33,23 +32,17 @@ sub data_for_path {
 	}->{ $method } // die "Unknown method $method\n";
 
 	while ( my $next = &$get_next ) {
-		my ( $path, $level, $ref ) = @$next;
+		my ( $path, $level, $ref, $hash ) = @$next;
 
-		my $basename = basename( $path );
-
-		$ref->{ $basename } = do {
-			if ( -f $path or -l $path ) { undef }
-			else {
-				my $hash = {};
-				if ( $level < $threshold ) {
-					push @queue, map { [ $_, $level + 1, $hash ] } map { catfile( $path, $_ ) } grep /^[^.]/, read_dir $path;
-				}
-				$hash;
-			}
-		};
+		if ( -d $path && !-l $path && ( $level < $threshold ) ) {
+			$hash = {};
+			push @queue, map { [ catfile( $path, $_ ), $level + 1, $hash ] } grep /^[^.]/, read_dir $path;
+		}
+		
+		$ref->{ basename( $path ) } = $hash;
 	}
 
-	$data;
+	return $data;
 }
 
 sub dump_data_for_path {
