@@ -1,0 +1,11 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+foreach ( map { glob } @ARGV ) {
+	opendir my $dh, $_ or say( "Not a directory: $_" ) && next;
+	say;
+	say "\t$_" foreach grep { /[^.]/ } readdir( $dh );
+	print "\n";
+}
