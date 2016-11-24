@@ -18,13 +18,18 @@ my $match = rightmost(
   \%patterns
 );
 
-print "Rightmost match [$match->{key}] at position $match->{start}\n";
+if ( $match ) {
+    print "Rightmost match [$match->{key}] at position $match->{start}\n";
+}
+else {
+    print "No matches\n";
+}
 
 sub rightmost {
   my( $string, $patterns ) = @_;
 
   # Doesn't find all if more than one
-  my $rightmost_match = reduce { ( !defined $a || $b->{start} > $a->{start} ) ? $b : $a } undef, grep { $_->{start} > -1 } pairmap { { key => $a, start => ($string =~ $b ? $-[0] : -1) } } ( %$patterns );
+  my $rightmost_match = reduce { ( !defined $a || $b->{start} > $a->{start} ) ? $b : $a } undef, grep { $_->{start} > -1 } pairmap { { key => $a, start => ($string =~ $b ? $-[0] : -1) } } %$patterns;
 
   return $rightmost_match;
 }
