@@ -1,0 +1,3 @@
+Benchmark: timing 1000000 iterations of original, transform...
+  original: 32 wallclock secs (11.84 usr + 20.27 sys = 32.11 CPU) @ 31142.95/s (n=1000000)
+ transform: 30 wallclock secs (15.90 usr + 15.29 sys = 31.19 CPU) @ 32061.56/s (n=1000000)
