@@ -1,0 +1,37 @@
+'''Larry Wall''' (born September 27, 1954){{citation needed|date=February 2016}} is a [[computer programmer]] and author, most widely known as the creator of the [[Perl]] [[programming language]].
+
+==Personal life==
+Wall grew up in [[Los Angeles]] and then [[Bremerton, Washington]], before starting higher education at [[Seattle Pacific University]] in 1976, majoring in chemistry and music and later [[pre-medicine]] with a hiatus of several years working in the university's computing center before graduating with a bachelor's degree in Natural and Artificial Languages.<ref name = lj>{{cite web | url = http://www.linuxjournal.com/article/3394 |author=Marjorie Richardson |title= Larry Wall, the Guru of Perl |publisher= [[Linux Journal]] |date= May 1, 1999 |accessdate= January 12, 2012}}</ref>
+
+While in graduate school at the  [[University of California, Berkeley]], Wall and his wife were studying [[linguistics]] with the intention of finding an unwritten language, perhaps in Africa, and creating a [[writing system]] for it. They would then use this new writing system to translate various texts into the language, among them the Bible.<ref name="tri">{{Triangulation|225|Larry Wall}}</ref> Due to health reasons these plans were cancelled, and they remained in the United States, where Larry instead joined the [[NASA]] [[Jet Propulsion Laboratory]] after he finished graduate school.<ref>{{cite web
+| last = Sims | first = David | date = April 8, 1998 | title = Q&A With Larry Wall, Creator of Perl | publisher = TechWeb
+| url = http://www.techweb.com/wire/story/TWB19980408S0020
+| archiveurl = https://web.archive.org/web/19981205141959/http://www.techweb.com/wire/story/TWB19980408S0020 | archivedate = December 5, 1998 | accessdate = August 15, 2011}}</ref>
+
+Wall is an active member of the [[Church of the Nazarene]].<ref>{{cite web|url=http://blogs.discovermagazine.com/gnxp/2008/07/larry-wall-fundamentalist-non-creationist-programmer|title=Larry Wall, Fundamentalist, non-Creationist, programmer|work=Gene Expression}}</ref>
+{{clear}}
+==Accomplishments==
+{{Spoken Wikipedia|Larry_Wall.ogg|2006-06-27}}
+Wall is the author of the [[rn (newsreader)|<code>rn</code>]] [[Usenet client]] and the widely used [[Patch (Unix)|<code>patch</code>]] program. He has won the [[International Obfuscated C Code Contest]] twice and was the recipient of the first [[Free Software Foundation]] [[Award for the Advancement of Free Software]] in 1998.<ref name="tri"/>
+
+Beyond his technical skills, Wall has a reputation for his wit and often sarcastic sense of humour,<ref name='www.perl.com/pub/a/1999/03/pm.ht'>{{Citation| first=Larry | last=Wall| title =Perl, the first postmodern computer language| quote=The following is the text of Larry Wall's talk at Linux World on Wednesday, March 3. He explains why Perl is a fitting language for the postmodern era. As a member of the audience commented: "Another mindbender from Larry." | publisher= O’Reilly Media | place= San Jose Convention Center, San Jose, CA, USA | date = March 3, 1999 | url=http://www.perl.com/pub/a/1999/03/pm.html | accessdate=November 19, 2007}}</ref> which he displays in the comments to his [[source code]] or on [[Usenet]]. For example: "We all agree on the necessity of compromise. We just can't agree on when it's necessary to compromise"{{r|usenet}} and:
+
+{{quote |For example, it's been several decades now since a certain set of Bible translations came out, and you'll notice a pattern: the New English Bible, the New American Standard Bible, and the New International Version, to name a few. It's really funny. I suspect we'll still be calling them "new this" and "new that" a hundred years from now. Much like New College at Oxford. Do you know when New College was founded? Any guesses? New College was new in 1379.<ref name="www.perl.com/pub/a/1999/03/pm.ht"/>}}
+
+Wall developed the Perl interpreter and language while working for [[System Development Corporation]], which later became part of [[Unisys]].<ref name= orn>{{cite web |url= http://www.oreillynet.com/pub/au/148 |title=Larry Wall |publisher= O’Reilly net |accessdate= January 12, 2012}}</ref> He is the co-author of ''[[Programming Perl]]'' (often referred to as the ''Camel Book'' and published by O'Reilly), which is the definitive resource for Perl programmers; and edited the ''[[Perl Cookbook]]''. He then became employed full-time by [[O'Reilly Media]] to further develop Perl and write books on the subject.<ref name = orn />
+
+Wall's training as a linguist is apparent in his books, interviews, and lectures. He often compares Perl to a natural language and explains his decisions in Perl's design with linguistic rationale. He also often uses linguistic terms for Perl language constructs, so instead of traditional terms such as "variable", "function", and "accessor" he sometimes says "[[noun]]", "[[verb]]", and "[[Topic (linguistics)|topicalizer]]".
+
+Wall's Christian faith has influenced some of the terminology of Perl, such as the name itself, a biblical reference to the "pearl of great price" ([[Gospel of Matthew|Matthew]] 13:46).<ref>{{Citation|last=Silberman|first=Steve|title= Scripting on the Lido Deck| journal = Wired (magazine)|url=http://www.wired.com/wired/archive/8.10/cruise.html?pg=3|year= 2000|volume= 8.10}}</ref> Similar references are the function name ''bless'', and the organization of [[Perl 6]] design documents with categories such as ''[[apocalypse]]'' and ''[[exegesis]]''. Wall has also alluded to his faith when he has spoken at conferences, including a rather straightforward statement of his beliefs at the August 1997 Perl Conference and a discussion of ''[[Pilgrim's Progress]]'' at the [[YAPC]] (Yet Another Perl Conference) in June 2000.{{Citation needed|date=March 2012}}
+
+Wall continues to oversee further development of Perl and serves as the [[benevolent dictator for life]] of the Perl project. His role in Perl is best conveyed by the so-called ''2 Rules'', taken from the official Perl documentation:
+#Larry is always by definition right about how Perl should behave. This means he has final veto power on the core functionality.
+#Larry is allowed to change his mind about any matter at a later date, regardless of whether he previously invoked Rule 1.
+::Got that? Larry is always right, even when he was wrong.<ref>{{Citation| title=Perl 5 Porters Governance&nbsp;– perlpolicy |url=http://perldoc.perl.org/perlpolicy.html#Perl-5-Porters}}</ref>
+
+==See also==
+{{wikiquote|Larry Wall}}
+
+* [[List of computer scientists]]
+* [[List of programmers]]
+
