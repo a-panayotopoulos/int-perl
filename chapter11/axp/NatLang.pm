@@ -10,10 +10,12 @@ our @month_name = qw( diz pod bod rod sip wax lin sen kun fiz nap dep );
 
 sub number_to_day_name {
 	my $num = shift // die "No day number provided\n";
-	return $day_of_week[$num] // die sprintf( "Day number %s out of range 0-%s\n", $num, $#day_of_week );
+	die "Argument '$num' is not numeric" unless $num =~ /^-?\d+$/;
+	return $day_of_week[$num] // die sprintf( "Day number %d out of range 0-%d\n", $num, $#day_of_week );
 }
 
 sub number_to_month_name {
 	my $num = shift // die "No month number provided\n";
-	return $month_name[$num] // die sprintf( "Month number %s out of range 0-%s\n", $num, $#month_name );
+	die "Argument '$num' is not numeric" unless $num =~ /^-?\d+$/;
+	return $month_name[$num] // die sprintf( "Month number %d out of range 0-%d\n", $num, $#month_name );
 }
