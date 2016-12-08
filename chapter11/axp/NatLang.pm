@@ -19,3 +19,5 @@ sub number_to_month_name {
 	die "Argument '$num' is not numeric\n" unless $num =~ /^-?\d+$/;
 	return $month_name[$num] // die sprintf( "Month number %d out of range 0-%d\n", $num, $#month_name );
 }
+
+1;
