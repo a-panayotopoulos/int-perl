@@ -1,0 +1,4 @@
+cocoa?n[ue]t
+Mary[-\s]+Anne?
+blahhh(whatever
+(The\s+)?(Skipper|Professor)

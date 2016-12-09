@@ -1,0 +1,16 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+my %fh = ();
+
+foreach my $line (<>) {
+	chomp( my $name = ( $line =~ s/:.*//r ) );
+	$name = lc ( $name =~ s/\W+/-/gr );
+	open $fh{$name}, '>', "$name.info" unless exists $fh{$name};
+	$fh{$name}->print( $line );
+}
+
+$_->close foreach values %fh;
+say "Wrote $_.info" foreach keys %fh;
