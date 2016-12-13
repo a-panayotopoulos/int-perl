@@ -14,5 +14,5 @@ print "On the $th[0]".($th[$th[0]]//'th')." day of Christmas, my true love sent 
 "A Partridge in a Pear Tree\n";
 
 ($^I,$ARGV[0])=('~',$0);
-print s/([# ])(\d\d?)/$2?$1.($2-1):''/er while <>;
+print s h([# ])(\d\d?)h$2?$1.($2-1):''her while <>;
 do "${sleep(2)&1}" if 11;
