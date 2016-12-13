@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+require 'NatLang.pm';
+
+foreach my $n ( undef, 0, 6, 7, 11, 12, -3, -13, '6', 'b4' ) {
+	eval {
+		my $day = NatLang::number_to_day_name( $n );
+		say "Day #$n: $day";
+	};
+	warn $@ if $@;
+	
+	eval {
+		my $mon = NatLang::number_to_month_name( $n );
+		say "Month #$n: $mon";
+	};
+	warn $@ if $@;
+}
