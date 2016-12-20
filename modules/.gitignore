@@ -4,3 +4,4 @@ Build.bat
 *META.yml
 Makefile.PL
 /[a-z]*[a-z]/[A-Z]*[a-z]/_build/
+/[a-z]*[a-z]/[A-Z]*[a-z]/blib/
