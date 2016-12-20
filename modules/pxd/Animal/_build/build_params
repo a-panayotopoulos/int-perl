@@ -1,0 +1,125 @@
+do{ my $x = [
+       {
+         'ARGV' => []
+       },
+       {},
+       {
+         'scripts' => undef,
+         'prefix' => undef,
+         'sign' => undef,
+         'c_source' => undef,
+         'debug' => undef,
+         'create_license' => undef,
+         'quiet' => undef,
+         'dist_suffix' => undef,
+         'dist_abstract' => undef,
+         'mb_version' => '0.421',
+         'blib' => 'blib',
+         'extra_linker_flags' => [],
+         'dist_version_from' => 'lib/Animal.pm',
+         'bundle_inc_preload' => [],
+         'dist_version' => '0.01',
+         'auto_configure_requires' => 1,
+         'original_prefix' => {},
+         'installdirs' => 'site',
+         'create_readme' => undef,
+         'meta_add' => {},
+         'build_requires' => {
+                               'Test::More' => 0
+                             },
+         'configure_requires' => {
+                                   'Module::Build' => 0
+                                 },
+         'build_script' => 'Build',
+         'create_packlist' => 1,
+         'cpan_client' => 'cpan',
+         'dist_name' => 'Animal',
+         'allow_pureperl' => 0,
+         'test_requires' => {},
+         'has_config_data' => undef,
+         'pm_files' => undef,
+         'build_elements' => [
+                               'PL',
+                               'support',
+                               'pm',
+                               'xs',
+                               'share_dir',
+                               'pod',
+                               'script'
+                             ],
+         'orig_dir' => '/home/pxd/perl/int-perl/modules/pxd/Animal',
+         'config_dir' => '_build',
+         'install_base' => undef,
+         'magic_number' => undef,
+         'release_status' => 'stable',
+         'mymetafile' => 'MYMETA.yml',
+         'recurse_into' => [],
+         'conflicts' => {},
+         'install_sets' => {},
+         'mymetafile2' => 'MYMETA.json',
+         'recommends' => {},
+         'use_rcfile' => 1,
+         'dist_author' => [
+                            'pxd <abc123@xyz.com>'
+                          ],
+         'base_dir' => '/home/pxd/perl/int-perl/modules/pxd/Animal',
+         'requires' => {},
+         'recursive_test_files' => undef,
+         'use_tap_harness' => 0,
+         'perl' => '/usr/bin/perl',
+         'module_name' => 'Animal',
+         'libdoc_dirs' => [
+                            'blib/lib',
+                            'blib/arch'
+                          ],
+         'needs_compiler' => '',
+         'metafile2' => 'META.json',
+         'bundle_inc' => [],
+         'tap_harness_args' => {},
+         'build_class' => 'Module::Build',
+         'verbose' => undef,
+         'html_css' => '',
+         'pod_files' => undef,
+         'xs_files' => undef,
+         'extra_manify_args' => undef,
+         'debugger' => undef,
+         'bindoc_dirs' => [
+                            'blib/script'
+                          ],
+         'extra_compiler_flags' => [],
+         'autosplit' => undef,
+         'install_base_relpaths' => {},
+         'share_dir' => undef,
+         'pollute' => undef,
+         'PL_files' => undef,
+         'build_bat' => 0,
+         'install_path' => {},
+         'metafile' => 'META.yml',
+         'allow_mb_mismatch' => 0,
+         'destdir' => undef,
+         'test_file_exts' => [
+                               '.t'
+                             ],
+         'prefix_relpaths' => {},
+         'script_files' => undef,
+         'meta_merge' => {},
+         'dynamic_config' => 1,
+         'create_makefile_pl' => 'traditional',
+         'license' => 'artistic_2',
+         'include_dirs' => [],
+         'get_options' => {},
+         'test_files' => undef,
+         'program_name' => undef,
+         'prereq_action_types' => [
+                                    'requires',
+                                    'build_requires',
+                                    'test_requires',
+                                    'conflicts',
+                                    'recommends'
+                                  ],
+         'pureperl_only' => 0,
+         'config' => undef,
+         '_added_to_INC' => []
+       }
+     ];
+$x; }
