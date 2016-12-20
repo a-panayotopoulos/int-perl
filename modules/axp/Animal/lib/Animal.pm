@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Animal - The great new Animal!
+Animal - Represent an abstract animal
 
 =head1 VERSION
 
@@ -16,37 +16,29 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Animal;
-
-    my $foo = Animal->new();
-    ...
+Don't use this class directly; instead instantiate subclasses of it.
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 speak
 
 =cut
 
-sub function1 {
+sub speak {
+	my $class = shift;
+	print "a $class goes $class->sound!\n";
 }
 
-=head2 function2
+=head2 sound
 
 =cut
 
-sub function2 {
+sub sound {
+	die 'You have to define sound() in a subclass';
 }
 
 =head1 AUTHOR
@@ -59,15 +51,11 @@ Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or t
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Animal
-
 
 You can also look for information at:
 
