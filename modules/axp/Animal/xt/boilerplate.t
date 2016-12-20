@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 4;
+plan tests => 7;
 
 sub not_in_file_ok {
     my ($filename, %regex) = @_;
@@ -52,6 +52,9 @@ TODO: {
 
   module_boilerplate_ok('lib/Animal.pm');
   module_boilerplate_ok('lib/Cow.pm');
+  module_boilerplate_ok('lib/Horse.pm');
+  module_boilerplate_ok('lib/Sheep.pm');
+  module_boilerplate_ok('lib/Mouse.pm');
 
 
 }
