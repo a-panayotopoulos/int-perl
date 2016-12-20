@@ -1,0 +1,19 @@
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+t\00-load.t ....... String found where operator expected at C:\Users\E047028\workspace\int-perl\modules\axp\Animal\blib\
+lib/Animal.pm line 43, near "pritn "Uh-oh!""
+        (Do you need to predeclare pritn?)
+
+t\00-load.t ....... 1/? #   Failed test 'use Animal;'
+#   at t\00-load.t line 10.
+#     Tried to use 'Animal'.
+#     Error:  syntax error at C:\Users\E047028\workspace\int-perl\modules\axp\Animal\blib\lib/Animal.pm line 43, near "p
+ritn "Uh-oh!""
+# Compilation failed in require at t\00-load.t line 10.
+# BEGIN failed--compilation aborted at t\00-load.t line 10.
+Bailout called.  Further testing stopped:
+Use of uninitialized value $Animal::VERSION in concatenation (.) or string at t\00-load.t line 13.
+# Testing Animal , Perl 5.016003, C:\Perl64\bin\perl.exe
+# Looks like you failed 1 test of 1.
+FAILED--Further testing stopped.
