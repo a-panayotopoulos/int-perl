@@ -3,6 +3,12 @@ Build.bat
 *META.json
 *META.yml
 Makefile.PL
+*.tmp
+
+# The follding excludes build directories, e.g. /bob/Animal/blib/
 /[a-z]*[a-z]/[A-Z]*[a-z]/_build/
 /[a-z]*[a-z]/[A-Z]*[a-z]/blib/
-*.tmp
+
+# The following excludes dist directories and files, e.g. /bob/Animal/Animal-0.01/
+/[a-z]*[a-z]/[A-Z]*[a-z]/[A-Z]*[a-z]-[0-9].[0-9][0-9]/
+/[a-z]*[a-z]/[A-Z]*[a-z]/[A-Z]*[a-z]-[0-9].[0-9][0-9].tar.gz
