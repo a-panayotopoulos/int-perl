@@ -1,13 +1,12 @@
-package Animal;
+package LivingCreature;
 
 use 5.006;
 use strict;
 use warnings;
-use parent qw( LivingCreature );
 
 =head1 NAME
 
-Animal - Represent an abstract animal
+LivingCreature - Represent some living creature
 
 =head1 VERSION
 
@@ -31,7 +30,16 @@ Don't use this class directly; instead instantiate subclasses of it.
 
 sub speak {
 	my $class = shift;
-	$class->SUPER::speak();
+	my $say_what = shift;
+	print $say_what ? "a $class says '$say_what'\n" : "a $class goes " . $class->sound . "!\n";
+}
+
+=head2 sound
+
+=cut
+
+sub sound {
+	die 'You have to define sound() in a subclass';
 }
 
 =head1 AUTHOR
@@ -40,15 +48,15 @@ Alex Panayotopoulos, C<< <alex.p at fake.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-livingcreature at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=LivingCreature>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc LivingCreature
 
 You can also look for information at:
 
@@ -56,19 +64,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=LivingCreature>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/LivingCreature>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/LivingCreature>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/LivingCreature/>
 
 =back
 
@@ -119,4 +127,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of LivingCreature
