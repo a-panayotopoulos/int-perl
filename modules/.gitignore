@@ -5,3 +5,4 @@ Build.bat
 Makefile.PL
 /[a-z]*[a-z]/[A-Z]*[a-z]/_build/
 /[a-z]*[a-z]/[A-Z]*[a-z]/blib/
+*.tmp
