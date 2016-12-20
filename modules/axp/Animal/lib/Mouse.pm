@@ -3,10 +3,11 @@ package Mouse;
 use 5.006;
 use strict;
 use warnings;
+use parent qw( Animal );
 
 =head1 NAME
 
-Mouse - The great new Mouse!
+Mouse - The mouse goes ˢᑫᵘᵉᵃᵏ
 
 =head1 VERSION
 
@@ -16,37 +17,34 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
+There's a moose loose, aboot this hoose.
 
     use Mouse;
 
-    my $foo = Mouse->new();
-    ...
+    Mouse->speak;
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
 
 =cut
 
-sub function1 {
+sub sound {
+	return 'squeak';
 }
 
-=head2 function2
+=head2 speak
 
 =cut
 
-sub function2 {
+sub speak {
+	my $class = shift;
+	$class->SUPER::speak( @_ );
+	print "[but you can barely hear it!]\n";
 }
 
 =head1 AUTHOR
@@ -59,15 +57,11 @@ Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or t
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Mouse
-
 
 You can also look for information at:
 
@@ -91,9 +85,7 @@ L<http://search.cpan.org/dist/Animal/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -134,7 +126,6 @@ YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
 CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 
 =cut
 
