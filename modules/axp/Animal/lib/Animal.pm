@@ -30,7 +30,7 @@ Don't use this class directly; instead instantiate subclasses of it.
 
 sub speak {
 	my $class = shift;
-	print "a $class goes $class->sound!\n";
+	print "a $class goes " . $class->sound . "!\n";
 }
 
 =head2 sound
