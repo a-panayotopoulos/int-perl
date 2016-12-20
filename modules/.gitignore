@@ -3,3 +3,4 @@ Build.bat
 *META.json
 *META.yml
 Makefile.PL
+/[a-z]*[a-z]/[A-Z]*[a-z]/_build/
