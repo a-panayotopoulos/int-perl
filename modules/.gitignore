@@ -12,3 +12,4 @@ Makefile.PL
 # The following excludes dist directories and files, e.g. /bob/Animal/Animal-0.01/
 /[a-z]*[a-z]/[A-Z]*[a-z]/[A-Z]*[a-z]-[0-9].[0-9][0-9]/
 /[a-z]*[a-z]/[A-Z]*[a-z]/[A-Z]*[a-z]-[0-9].[0-9][0-9].tar.gz
+*.bak
