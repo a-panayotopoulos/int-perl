@@ -34,6 +34,16 @@ People are overratted.
 
 =cut
 
+sub speak {
+	my ( $class, $say_what ) = @_;
+	
+	$say_what ? print "a $class says '$say_what'\n" : $class->SUPER::speak();
+}
+
+=head2 sound
+
+=cut
+
 sub sound {
 	return "humm-dee-humm";
 }

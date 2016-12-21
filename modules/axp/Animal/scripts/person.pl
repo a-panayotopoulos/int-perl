@@ -12,8 +12,12 @@ Cow->speak;
 Cow->speak( "The grass over the other side of that fence looks greener. " .
 	"Wait, shit, I forgot I was colourblind." );
 
+say "=====";
+	
 Mouse->speak;
 Mouse->speak( "Emmenthal's overrated, really. Have you tried a nice Fontina?" );
+
+say "=====";
 
 # People can either hum or say things
 Person->speak;

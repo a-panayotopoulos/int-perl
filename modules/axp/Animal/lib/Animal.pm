@@ -21,19 +21,6 @@ our $VERSION = '0.01';
 
 Don't use this class directly; instead instantiate subclasses of it.
 
-=head1 EXPORT
-
-=head1 SUBROUTINES/METHODS
-
-=head2 speak
-
-=cut
-
-sub speak {
-	my $class = shift;
-	$class->SUPER::speak();
-}
-
 =head1 AUTHOR
 
 Alex Panayotopoulos, C<< <alex.p at fake.com> >>
