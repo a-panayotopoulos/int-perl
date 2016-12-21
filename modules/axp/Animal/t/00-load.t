@@ -4,10 +4,10 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 6;
+plan tests => 7;
 
 BEGIN {
-	foreach my $class qw( LivingCreature Animal Cow Horse Sheep Mouse ) {
+	foreach my $class qw( LivingCreature Animal Cow Horse Sheep Mouse Person ) {
 		use_ok( $class ) or print "Bail out! $class does not compile!\n";
 	}
 }
