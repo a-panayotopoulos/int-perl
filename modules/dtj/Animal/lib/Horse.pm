@@ -1,4 +1,4 @@
-package Cow;
+package Horse;
 
 use 5.006;
 use strict;
@@ -6,11 +6,11 @@ use warnings;
 
 use parent qw(Animal);
 
-sub sound { 'moooo' }
+sub sound { 'neigh' }
 
 =head1 NAME
 
-Cow - The great new Cow!
+Horse - The great new Horse!
 
 =head1 VERSION
 
@@ -27,9 +27,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Cow;
+    use Horse;
 
-    my $foo = Cow->new();
+    my $foo = Horse->new();
     ...
 
 =head1 EXPORT
@@ -70,7 +70,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Horse
 
 
 You can also look for information at:
@@ -101,7 +101,7 @@ L<http://search.cpan.org/dist/./>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Daniel jones.
+Copyright 2017 Daniel jones.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -142,4 +142,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Horse

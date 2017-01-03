@@ -4,6 +4,15 @@ use 5.006;
 use strict;
 use warnings;
 
+sub speak {
+  my $class = shift;
+  print "a $class goes ", $class->sound, "!\n";
+}
+
+sub sound {
+  die 'You have to define sound() in a subclass'
+}
+
 =head1 NAME
 
 Animal - The great new Animal!
