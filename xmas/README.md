@@ -16,6 +16,6 @@ see what people can come up with themselves.
 * There's no official character limit, but shorter is always better!
 * Use the classic folder format of `xmas/<username>/<program>`.
 * You can enter multiple times if you like.
-* To save voters' sanity, include any sample input and/or output with your merge request.
-* All entries to be in by Sunday, 15th January.
-* Voting to conclude by Sunday, 22nd January.
+* To save voters' sanity, consider including sample input and/or output with your merge request.
+* All entries to be in by Tuesday, 10th January.
+* Voting to conclude by Sunday, 15th January.
