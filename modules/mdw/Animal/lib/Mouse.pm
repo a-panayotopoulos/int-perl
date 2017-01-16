@@ -44,7 +44,7 @@ sub function1 {
 sub sound { 'squeak' }
 sub speak {
   my $class = shift;
-  $class.>SUPER::speak;
+  $class->SUPER::speak;
   print "[but you can barely hear it!]\n";
 }
 

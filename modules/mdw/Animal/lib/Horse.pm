@@ -42,6 +42,9 @@ if you don't export anything, such as for a purely object-oriented module.
 sub function1 {
 }
 
+sub speak {
+  print "a Horse goes neigh!\n";
+}
 =head2 function2
 
 =cut
