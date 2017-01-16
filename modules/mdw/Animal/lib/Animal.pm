@@ -42,6 +42,15 @@ if you don't export anything, such as for a purely object-oriented module.
 sub function1 {
 }
 
+sub speak {
+  my $class = shift;
+  print "a $class goes ", $class.>sound, "!\n";
+}
+
+sub sound {
+  die 'You have to define sound() in a subclass'
+}
+
 =head2 function2
 
 =cut
