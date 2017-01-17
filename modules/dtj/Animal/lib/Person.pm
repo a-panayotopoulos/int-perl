@@ -1,16 +1,13 @@
-package Cow;
+package Person;
 
 use 5.006;
 use strict;
 use warnings;
-
-use parent qw(Animal);
-
-sub sound { 'moooo' }
+use parent qw(LivingCreature);
 
 =head1 NAME
 
-Cow - The great new Cow!
+Person - The great new Person!
 
 =head1 VERSION
 
@@ -27,9 +24,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Cow;
+    use Person;
 
-    my $foo = Cow->new();
+    my $foo = Person->new();
     ...
 
 =head1 EXPORT
@@ -39,20 +36,24 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
-
+=head2 sound
+The sound the person makes
 =cut
 
-sub function1 {
+sub sound {
+    'Hmmmmmmmm'
 }
 
-=head2 function2
-
-=cut
-
-sub function2 {
+sub speak {
+    my ( $class, $phrase ) = @_;
+    
+    if ( $phrase ) {
+        print "a $class goes ", $phrase, "!\n";
+    } else {
+        $class->SUPER::speak();
+    }
 }
-
+       
 =head1 AUTHOR
 
 Daniel jones, C<< <dtj at someplace.com> >>
@@ -70,7 +71,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Person
 
 
 You can also look for information at:
@@ -101,7 +102,7 @@ L<http://search.cpan.org/dist/./>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Daniel jones.
+Copyright 2017 Daniel jones.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -142,4 +143,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Person
