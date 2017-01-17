@@ -1,4 +1,4 @@
-package Cow;
+package Sheep;
 
 use 5.006;
 use strict;
@@ -7,7 +7,7 @@ use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The cow goes moooo
+Sheep - The sheep goes baaaah
 
 =head1 VERSION
 
@@ -19,22 +19,22 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Don't have a cow, man.
+Sheep have many uses.
 
-    use Cow;
+    use Sheep;
 
-    Cow->speak;
+    Sheep->speak;
 
 =head1 EXPORT
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sound
+=head2 function1
 
 =cut
 
 sub sound {
-	return 'moooo';
+	return 'baaaah';
 }
 
 =head1 AUTHOR
@@ -51,7 +51,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Sheep
 
 You can also look for information at:
 
@@ -119,4 +119,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Sheep

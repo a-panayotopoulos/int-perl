@@ -1,4 +1,4 @@
-package Cow;
+package Horse;
 
 use 5.006;
 use strict;
@@ -7,7 +7,7 @@ use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The cow goes moooo
+Horse - The horse goes neigh!
 
 =head1 VERSION
 
@@ -19,11 +19,11 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Don't have a cow, man.
+Beware wooden versions of this module implemented by this author.
 
-    use Cow;
+    use Horse;
 
-    Cow->speak;
+    Horse->speak;
 
 =head1 EXPORT
 
@@ -34,7 +34,7 @@ Don't have a cow, man.
 =cut
 
 sub sound {
-	return 'moooo';
+	return 'neigh';
 }
 
 =head1 AUTHOR
@@ -51,7 +51,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Horse
 
 You can also look for information at:
 
@@ -119,4 +119,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Horse

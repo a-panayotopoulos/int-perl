@@ -1,13 +1,13 @@
-package Cow;
+package Person;
 
 use 5.006;
 use strict;
 use warnings;
-use parent qw( Animal );
+use parent qw( LivingCreature );
 
 =head1 NAME
 
-Cow - The cow goes moooo
+Person - The person goes 'blah blah blah'
 
 =head1 VERSION
 
@@ -19,22 +19,33 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Don't have a cow, man.
+People are overratted.
 
-    use Cow;
+    use Person;
 
-    Cow->speak;
+    Person->speak;
+    Person->speak( 'Hello, world' );
 
 =head1 EXPORT
 
 =head1 SUBROUTINES/METHODS
+
+=head2 speak
+
+=cut
+
+sub speak {
+	my ( $class, $say_what ) = @_;
+	
+	$say_what ? print "a $class says '$say_what'\n" : $class->SUPER::speak();
+}
 
 =head2 sound
 
 =cut
 
 sub sound {
-	return 'moooo';
+	return "humm-dee-humm";
 }
 
 =head1 AUTHOR
@@ -43,15 +54,15 @@ Alex Panayotopoulos, C<< <alex.p at fake.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Person
 
 You can also look for information at:
 
@@ -59,19 +70,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/.>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/.>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/./>
 
 =back
 
@@ -117,6 +128,7 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
 =cut
 
-1; # End of Cow
+1; # End of Person

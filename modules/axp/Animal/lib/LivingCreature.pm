@@ -1,13 +1,12 @@
-package Cow;
+package LivingCreature;
 
 use 5.006;
 use strict;
 use warnings;
-use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The cow goes moooo
+LivingCreature - Represent some living creature
 
 =head1 VERSION
 
@@ -19,22 +18,27 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Don't have a cow, man.
-
-    use Cow;
-
-    Cow->speak;
+Don't use this class directly; instead instantiate subclasses of it.
 
 =head1 EXPORT
 
 =head1 SUBROUTINES/METHODS
+
+=head2 speak
+
+=cut
+
+sub speak {
+	my $class = shift;
+	print "a $class goes " . $class->sound . "!\n";
+}
 
 =head2 sound
 
 =cut
 
 sub sound {
-	return 'moooo';
+	die 'You have to define sound() in a subclass';
 }
 
 =head1 AUTHOR
@@ -43,15 +47,15 @@ Alex Panayotopoulos, C<< <alex.p at fake.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-livingcreature at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=LivingCreature>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc LivingCreature
 
 You can also look for information at:
 
@@ -59,23 +63,25 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=LivingCreature>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/LivingCreature>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/LivingCreature>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/LivingCreature/>
 
 =back
 
+
 =head1 ACKNOWLEDGEMENTS
+
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -117,6 +123,7 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
 =cut
 
-1; # End of Cow
+1; # End of LivingCreature

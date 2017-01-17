@@ -1,4 +1,4 @@
-package Cow;
+package Mouse;
 
 use 5.006;
 use strict;
@@ -7,7 +7,7 @@ use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The cow goes moooo
+Mouse - The mouse goes ˢᑫᵘᵉᵃᵏ
 
 =head1 VERSION
 
@@ -19,11 +19,11 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Don't have a cow, man.
+There's a moose loose, aboot this hoose.
 
-    use Cow;
+    use Mouse;
 
-    Cow->speak;
+    Mouse->speak;
 
 =head1 EXPORT
 
@@ -34,7 +34,17 @@ Don't have a cow, man.
 =cut
 
 sub sound {
-	return 'moooo';
+	return 'squeak';
+}
+
+=head2 speak
+
+=cut
+
+sub speak {
+	my $class = shift;
+	$class->SUPER::speak( @_ );
+	print "[but you can barely hear it!]\n";
 }
 
 =head1 AUTHOR
@@ -51,7 +61,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Mouse
 
 You can also look for information at:
 
@@ -119,4 +129,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Mouse
