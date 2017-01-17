@@ -1,16 +1,13 @@
-package Cow;
+package Person;
 
 use 5.006;
 use strict;
 use warnings;
-
-use parent qw(Animal);
-
-sub sound { 'moooo' }
+use parent qw( LivingCreature );
 
 =head1 NAME
 
-Cow - The great new Cow!
+Person - The person goes 'blah blah blah'
 
 =head1 VERSION
 
@@ -20,42 +17,40 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+People are overratted.
 
-Perhaps a little code snippet.
+    use Person;
 
-    use Cow;
-
-    my $foo = Cow->new();
-    ...
+    Person->speak;
+    Person->speak( 'Hello, world' );
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 speak
 
 =cut
 
-sub function1 {
+sub speak {
+	my ( $class, $say_what ) = @_;
+	
+	$say_what ? print "a $class says '$say_what'\n" : $class->SUPER::speak();
 }
 
-=head2 function2
+=head2 sound
 
 =cut
 
-sub function2 {
+sub sound {
+	return "humm-dee-humm";
 }
 
 =head1 AUTHOR
 
-Daniel jones, C<< <dtj at someplace.com> >>
+Alex Panayotopoulos, C<< <alex.p at fake.com> >>
 
 =head1 BUGS
 
@@ -63,15 +58,11 @@ Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or throug
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
-
+    perldoc Person
 
 You can also look for information at:
 
@@ -95,13 +86,11 @@ L<http://search.cpan.org/dist/./>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Daniel jones.
+Copyright 2016 Alex Panayotopoulos.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -142,4 +131,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of Person

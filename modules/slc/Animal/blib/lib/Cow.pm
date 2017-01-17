@@ -4,10 +4,6 @@ use 5.006;
 use strict;
 use warnings;
 
-use parent qw(Animal);
-
-sub sound { 'moooo' }
-
 =head1 NAME
 
 Cow - The great new Cow!
@@ -55,12 +51,12 @@ sub function2 {
 
 =head1 AUTHOR
 
-Daniel jones, C<< <dtj at someplace.com> >>
+Sean Clark, C<< <sean.clark at mastercard.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -79,19 +75,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/Animal>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/Animal>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/Animal/>
 
 =back
 
@@ -101,7 +97,7 @@ L<http://search.cpan.org/dist/./>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Daniel jones.
+Copyright 2017 Sean Clark.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a

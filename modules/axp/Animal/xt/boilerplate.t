@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 
-plan tests => 4;
+plan tests => 9;
 
 sub not_in_file_ok {
     my ($filename, %regex) = @_;
@@ -50,9 +50,8 @@ TODO: {
     "placeholder date/time"       => qr(Date/time)
   );
 
-  module_boilerplate_ok('lib/Animal.pm');
-  module_boilerplate_ok('lib/Cow.pm');
-
-
+  foreach my $class qw( LivingCreature Animal Cow Horse Sheep Mouse Person ) {
+    module_boilerplate_ok( "lib/$class.pm" );
+  }
 }
 

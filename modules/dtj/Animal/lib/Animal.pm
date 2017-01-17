@@ -3,6 +3,7 @@ package Animal;
 use 5.006;
 use strict;
 use warnings;
+use parent qw(LivingCreature);
 
 =head1 NAME
 

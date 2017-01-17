@@ -1,16 +1,13 @@
-package Cow;
+package Mouse;
 
 use 5.006;
 use strict;
 use warnings;
-
-use parent qw(Animal);
-
-sub sound { 'moooo' }
+use parent qw( Animal );
 
 =head1 NAME
 
-Cow - The great new Cow!
+Mouse - The mouse goes ˢᑫᵘᵉᵃᵏ
 
 =head1 VERSION
 
@@ -20,58 +17,51 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+There's a moose loose, aboot this hoose.
 
-Perhaps a little code snippet.
+    use Mouse;
 
-    use Cow;
-
-    my $foo = Cow->new();
-    ...
+    Mouse->speak;
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sound
 
 =cut
 
-sub function1 {
+sub sound {
+	return 'squeak';
 }
 
-=head2 function2
+=head2 speak
 
 =cut
 
-sub function2 {
+sub speak {
+	my $class = shift;
+	$class->SUPER::speak( @_ );
+	print "[but you can barely hear it!]\n";
 }
 
 =head1 AUTHOR
 
-Daniel jones, C<< <dtj at someplace.com> >>
+Alex Panayotopoulos, C<< <alex.p at fake.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
-
+    perldoc Mouse
 
 You can also look for information at:
 
@@ -79,29 +69,27 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/.>
+L<http://annocpan.org/dist/Animal>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/.>
+L<http://cpanratings.perl.org/d/Animal>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/./>
+L<http://search.cpan.org/dist/Animal/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Daniel jones.
+Copyright 2016 Alex Panayotopoulos.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -139,7 +127,6 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 =cut
 
-1; # End of Cow
+1; # End of Mouse
