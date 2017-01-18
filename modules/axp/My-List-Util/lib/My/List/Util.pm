@@ -35,18 +35,18 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sum
 
 =cut
 
-sub function1 {
+sub sum {
 }
 
-=head2 function2
+=head2 shuffle
 
 =cut
 
-sub function2 {
+sub shuffle {
 }
 
 =head1 AUTHOR
