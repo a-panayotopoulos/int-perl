@@ -51,7 +51,7 @@ Shuffle a list of items
 
 sub shuffle {
 	# Using Fisher-Yates
-	my @arr = @_;
+	my @arr = @_ or return;
 	my $i = @arr;
 	while ( --$i ) {
 		my $j = int rand( $i + 1 );
