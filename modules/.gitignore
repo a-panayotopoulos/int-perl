@@ -9,6 +9,7 @@ Makefile.PL
 # The follding excludes build directories, e.g. /bob/Animal/blib/
 /[a-z]*[a-z]/[A-Z]*[a-z]/_build/
 /[a-z]*[a-z]/[A-Z]*[a-z]/blib/
+/[a-z]*[a-z]/[A-Z]*[a-z]/cover_db/
 
 # The following excludes dist directories and tarballs, e.g. /bob/Animal/Animal-0.01/
 /[a-z]*[a-z]/[A-Z]*[a-z]/[A-Z]*[a-z]-[0-9].[0-9][0-9]/
