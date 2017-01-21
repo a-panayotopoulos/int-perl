@@ -14,6 +14,4 @@ inc/
 nytprof.out
 pod2htm*.tmp
 pm_to_blib
-My-List-Util-*
-My-List-Util-*.tar.gz
 .bak
