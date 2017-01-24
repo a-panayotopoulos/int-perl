@@ -1,16 +1,13 @@
-package Cow;
+package My::List::Util;
 
 use 5.006;
 use strict;
 use warnings;
-
-use parent qw(Animal);
-
-sub sound { 'moooo' }
+use Scalar::Util qw( looks_like_number );
 
 =head1 NAME
 
-Cow - The great new Cow!
+My::List::Util - A buggier reimplementation of things that have been done millions of times before
 
 =head1 VERSION
 
@@ -20,11 +17,58 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Does boring list stuff
 
+=head1 SUBROUTINES/METHODS
+
+=head2 sum
+
+Returns a sum of a list.
+=cut
+
+sub sum {
+  my ( @input ) = @_;
+
+  if ( !scalar @input ) {
+    die "Input was empty";
+  }
+
+  my $sum;
+  foreach my $element ( @input ) {
+    if ( !looks_like_number( $element ) ) {
+      die "Invalid input: $element";
+    }
+    $sum += $element;
+  }
+
+  return $sum;
+}
+
+=head2 shuffle
+Mix things up a little bit
+=cut
+
+sub shuffle {
+  my ( @input ) = @_;
+
+  if ( !scalar @input ) {
+    die "Input was empty";
+  }
+
+  my $size = @input;
+  my @output;
+  while ( @input ) {
+    my $i = int( rand() * @input );
+    push @output, $input[$i];
+
+    # I had delete and it was leaving undefs
+    splice @input, $i, 1;
+  }
+
+  return @output;
+}
 
 =head1 AUTHOR
 
@@ -32,47 +76,18 @@ Daniel jones, C<< <dtj at someplace.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-. at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=.>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+Included free of charge
 
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker (report bugs here)
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=.>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/.>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/.>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/./>
-
-=back
-
-
-=head1 ACKNOWLEDGEMENTS
-
+    perldoc My::List::Util
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Daniel jones.
+Copyright 2017 Daniel jones.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -113,4 +128,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Cow
+1; # End of My::List::Util
