@@ -8,6 +8,8 @@ use parent qw(Animal);
 
 sub sound { 'baaaah' }
 
+sub default_color { 'white' }
+
 =head1 NAME
 
 Sheep - The great new Sheep!
