@@ -1,51 +1,103 @@
-Animal
+package Person;
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+use 5.006;
+use strict;
+use warnings;
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+=head1 NAME
+
+Person - The great new Person!
+
+=head1 VERSION
+
+Version 0.01
+
+=cut
+
+our $VERSION = '0.01';
 
 
-INSTALLATION
+=head1 SYNOPSIS
 
-To install this module, run the following commands:
+Quick summary of what the module does.
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+Perhaps a little code snippet.
 
-SUPPORT AND DOCUMENTATION
+    use Person;
 
-After installing, you can find documentation for this module with the
-perldoc command.
+    my $foo = Person->new();
+    ...
 
-    perldoc Animal
+=head1 EXPORT
+
+A list of functions that can be exported.  You can delete this section
+if you don't export anything, such as for a purely object-oriented module.
+
+=head1 SUBROUTINES/METHODS
+
+=head2 function1
+
+=cut
+
+sub function1 {
+}
+
+=head2 function2
+
+=cut
+
+sub function2 {
+}
+
+=head1 AUTHOR
+
+xyz, C<< <Pratyusha.Doddapaneni at datacash.com> >>
+
+=head1 BUGS
+
+Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
+
+
+
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Person
+
 
 You can also look for information at:
 
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal
+=over 4
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Animal
+=item * RT: CPAN's request tracker (report bugs here)
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Animal
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
 
-    Search CPAN
-        http://search.cpan.org/dist/Animal/
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Animal>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Animal>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Animal/>
+
+=back
 
 
-LICENSE AND COPYRIGHT
+=head1 ACKNOWLEDGEMENTS
 
-Copyright (C) 2017 xyz
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2017 xyz.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -83,3 +135,7 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
+=cut
+
+1; # End of Person
