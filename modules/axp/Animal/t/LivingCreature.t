@@ -33,6 +33,5 @@ like( exception { LivingCreature->speak() }, $expected_error, 'speak() dies with
 stdout_is { MahnaMahna->speak() } "a MahnaMahna goes Mahna Mahna!\n", "speak() is as expected";
 
 # A living creature instance (N.B. instances of LivingCreature are not yet supported)
-my $deedoodoo = {};
-bless $deedoodoo, 'MahnaMahna';
+my $deedoodoo = bless {}, 'MahnaMahna';
 like( exception { $deedoodoo->speak }, qr/^Static method used as instance call/, 'speak called on an instance' );

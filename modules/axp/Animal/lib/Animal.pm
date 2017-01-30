@@ -36,8 +36,7 @@ sub named {
 	ref ( my $class = shift ) and croak "Static constructor used as instance call";
 	my $name = shift or croak "Need to provide a name";
 	my $self = { Name => $name, Colour => $class->default_colour };
-	bless $self, $class;
-	return $self;
+	return bless $self, $class;
 }
 
 =head2 name

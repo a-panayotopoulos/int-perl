@@ -17,8 +17,7 @@ ok( defined &Person::sound, 'Person::sound is defined' );
 ok( defined &Person::speak, 'Person::speak is defined' );
 
 # A person instance (N.B. instances of person are not yet supported)
-my $axp = {};
-bless $axp, 'Person';
+my $axp = bless {}, 'Person';
 
 # Test Person sound
 is( Person->sound(), "humm-dee-humm", "A Person says humm-dee-humm" );
