@@ -42,9 +42,20 @@ sub sound {
 =cut
 
 sub speak {
-	my $class = shift;
-	$class->SUPER::speak( @_ );
+	my $either = shift;
+	$either->SUPER::speak( @_ );
 	print "[but you can barely hear it!]\n";
+}
+
+=head2 default_colour
+
+The default colour for this type of animal.
+
+=cut
+
+sub default_colour {
+	ref ( my $class = shift ) and croak "Static method used as instance call";
+	return "grey";
 }
 
 =head1 AUTHOR

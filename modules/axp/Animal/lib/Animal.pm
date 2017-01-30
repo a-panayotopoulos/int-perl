@@ -21,6 +21,79 @@ our $VERSION = '0.01';
 
 Don't use this class directly; instead instantiate subclasses of it.
 
+=head1 EXPORT
+
+=head1 SUBROUTINES/METHODS
+
+=head2 named
+
+Construct a new Animal, with the given name
+
+=cut
+
+sub named {
+	ref ( my $class = shift ) and croak "Static constructor used as instance call";
+	my $name = shift or croak "Need to provide a name";
+	my $self = { Name => $name, Colour => $class->default_colour };
+	bless $self, $class;
+	return $self;
+}
+
+=head2 name
+
+Get or set the Animal's name
+
+=cut
+
+sub name {
+	ref ( my $self = shift ) or croak "Instance variable needed";
+	if ( @_ ) {
+		$self->name = shift;
+		return $self;
+	}
+	else {
+		return $self->name;
+	}
+}
+
+=head2 colour
+
+Get or set the Animal's colour
+
+=cut
+
+sub colour {
+	my $either = shift;
+	
+	if ( @_ ) {
+		ref ( $either ) or croak "Instance variable needed";
+		$either->colour = shift;
+		return $either;
+	}
+	else {
+		return ref ( $either ) ? $either->colour : default_colour();
+	}
+}
+
+=head2 default_colour
+
+The default colour for this type of animal.
+
+=cut
+
+sub default_colour {
+	die 'You have to define default_colour() in a subclass';
+}
+
+=head2 speak
+
+=cut
+
+sub speak {
+	my $either = shift;
+	ref ( $either ) ? print $either->name . " goes " . $either->sound . "!\n" : $either->SUPER::speak();
+}
+
 =head1 AUTHOR
 
 Alex Panayotopoulos, C<< <alex.p at fake.com> >>

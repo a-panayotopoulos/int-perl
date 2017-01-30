@@ -35,9 +35,8 @@ People are overratted.
 =cut
 
 sub speak {
-	my ( $class, $say_what ) = @_;
-	
-	$say_what ? print "a $class says '$say_what'\n" : $class->SUPER::speak();
+	ref ( my $class = shift ) and croak "Static method used as instance call";
+	( @_ ) ? print "a $class says '" . shift . "'\n" : $class->SUPER::speak();
 }
 
 =head2 sound

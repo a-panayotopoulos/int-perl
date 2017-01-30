@@ -37,6 +37,17 @@ sub sound {
 	return 'neigh';
 }
 
+=head2 default_colour
+
+The default colour for this type of animal.
+
+=cut
+
+sub default_colour {
+	ref ( my $class = shift ) and croak "Static method used as instance call";
+	return "brown";
+}
+
 =head1 AUTHOR
 
 Alex Panayotopoulos, C<< <alex.p at fake.com> >>

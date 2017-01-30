@@ -29,7 +29,7 @@ Don't use this class directly; instead instantiate subclasses of it.
 =cut
 
 sub speak {
-	my $class = shift;
+	ref ( my $class = shift ) and croak "Static method used as instance call";
 	print "a $class goes " . $class->sound . "!\n";
 }
 
