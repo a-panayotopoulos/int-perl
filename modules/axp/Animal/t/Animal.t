@@ -2,7 +2,7 @@
 use 5.006;
 use strict;
 use warnings;
-use Test::More 0.62 tests => 18;
+use Test::More 0.62 tests => 19;
 use Test::Output;
 use Test::Fatal;
 
@@ -34,6 +34,7 @@ ok( defined &Animal::default_colour, 'Animal::default_colour is defined' );
 my $muppet = Muppet->named( 'Beaker' );
 is( ref( $muppet ), 'Muppet', "Created a Muppet instance" );
 like( exception { Muppet->named }, qr/^Need to provide a name/, 'named() without params' );
+like( exception { $muppet->named }, qr/^Static constructor used as instance call/, 'try to call named() on an instance' );
 
 # Test 'name' (an instance getter/setter)
 like( exception { Muppet->name }, qr/^Instance variable needed/, 'try to get a name statically' );
