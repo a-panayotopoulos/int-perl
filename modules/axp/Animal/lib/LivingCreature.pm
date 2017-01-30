@@ -3,6 +3,7 @@ package LivingCreature;
 use 5.006;
 use strict;
 use warnings;
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -38,7 +39,7 @@ sub speak {
 =cut
 
 sub sound {
-	die 'You have to define sound() in a subclass';
+	croak 'You have to define sound() in a subclass';
 }
 
 =head1 AUTHOR

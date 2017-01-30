@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use parent qw( LivingCreature );
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -48,11 +49,11 @@ Get or set the Animal's name
 sub name {
 	ref ( my $self = shift ) or croak "Instance variable needed";
 	if ( @_ ) {
-		$self->name = shift;
+		$self->{ Name } = shift;
 		return $self;
 	}
 	else {
-		return $self->name;
+		return $self->{ Name };
 	}
 }
 
@@ -67,11 +68,11 @@ sub colour {
 	
 	if ( @_ ) {
 		ref ( $either ) or croak "Instance variable needed";
-		$either->colour = shift;
+		$either->{ Colour } = shift;
 		return $either;
 	}
 	else {
-		return ref ( $either ) ? $either->colour : default_colour();
+		return ref ( $either ) ? $either->{ Colour } : $either->default_colour();
 	}
 }
 
@@ -82,7 +83,7 @@ The default colour for this type of animal.
 =cut
 
 sub default_colour {
-	die 'You have to define default_colour() in a subclass';
+	croak 'You have to define default_colour() in a subclass';
 }
 
 =head2 speak
