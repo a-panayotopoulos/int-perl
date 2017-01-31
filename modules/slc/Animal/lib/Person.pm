@@ -2,14 +2,18 @@ package Person;
 
 use parent qw(LivingCreature);
 
+sub default_colour {
+    return 'white';
+}
+
 sub speak {
-  my $class = shift;
+  my $either = shift;
   my $sentence = shift;
   if ( defined $sentence ) {
-    print "a $class says \"", $sentence, "\"\n";
+    print $either->name(), " says \"", $sentence, "\"\n";
   }
   else {
-    $class->SUPER::speak();
+    $either->SUPER::speak();
   }
 }
 
