@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use File::Find;
+use Time::ParseDate;
+
+my $monday = parsedate( "last Monday at 00:00:00" );
+my $tuesday = $monday + ( 24 * 60 * 60 );
+my ( $gather, $yield ) = gather_mtime_between( $monday, $tuesday );
+
+find( $gather, @ARGV ? @ARGV : ('.') );
+say localtime( (stat)[9] ) . ": $_" foreach ( $yield->() );
+
+sub gather_mtime_between {
+	my ( $start, $end ) = @_;
+	my @files;
+	return (
+		sub { push @files, $File::Find::name if ( -f && $start <= (stat)[9] && (stat)[9] < $end ); },
+		sub { return @files; }
+	);
+}

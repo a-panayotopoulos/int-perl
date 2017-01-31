@@ -1,0 +1,5 @@
+author: pxd
+email: abc123@xyz.com
+builder: Module::Build
+verbose: 1
+plugins: Module::Starter::AddModule

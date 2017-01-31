@@ -1,0 +1,2 @@
+#!/bin/bash
+git show 9fce827681b90a47943654a1c449a6715ab82105

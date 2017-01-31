@@ -1,0 +1,1 @@
+Passenger hashes are declared using {}, which define anonymous hashes.

@@ -1,0 +1,19 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use File::Slurp qw( read_dir );
+
+use constant OSDIRS => { 'linux' => '/etc', 'MSWin32' => 'C:\\Windows' };
+
+my $dir = OSDIRS->{$^O} or die "Not a known operating system $^O\n";
+
+while ( 1 ) {
+	say "\nGimme a regex, or enter to exit:";
+	chomp( my $input = <STDIN> );
+	last if ( $input eq '' );
+	eval {
+		say join( "\n", grep { /^$input$/ } read_dir( $dir ) ) || "No files match that regex";
+	};
+	say "Bad redex! No cookie." if ( $@ );
+}

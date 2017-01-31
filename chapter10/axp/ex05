@@ -1,0 +1,57 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use File::Slurp qw( read_dir );
+use File::Basename qw( basename );
+use File::Spec::Functions qw( catfile );
+use Cwd qw ( abs_path );
+use Getopt::Std;
+
+my %opts;
+
+getopts( 'dt:', \%opts );
+
+my $method = $opts{d} ? 'depth-first' : 'breadth-first';
+my $threshold = $opts{t} // 100;
+my $dir = abs_path( $ARGV[0] // '.' );
+
+say "Using method <$method>, threshold <$threshold>";
+
+dump_data_for_path( basename( $dir ), values data_for_path( $dir, $threshold, $method ) );
+
+sub data_for_path {
+	my ( $path, $threshold, $method ) = @_;
+
+	my $data = {};
+	my @queue = ( [ $path, 0, $data ] );
+	
+	my $get_next = {
+		'depth-first' => sub { return pop @queue },
+		'breadth-first' => sub { return shift @queue }
+	}->{ $method } // die "Unknown method $method\n";
+
+	while ( my $next = &$get_next ) {
+		my ( $path, $level, $ref, $hash ) = @$next;
+
+		if ( -d $path && !-l $path && ( $level < $threshold ) ) {
+			$hash = {};
+			push @queue, map { [ catfile( $path, $_ ), $level + 1, $hash ] } grep /^[^.]/, read_dir $path;
+		}
+		
+		$ref->{ basename( $path ) } = $hash;
+	}
+
+	return $data;
+}
+
+sub dump_data_for_path {
+	my ( $fname, $data, $indent ) = @_;
+	
+	$indent //= "";
+	print "$indent$fname";
+	return say '' if ( !defined $data );
+	return say ", an empty directory" if ( !%$data );
+	say ", with contents:";
+	dump_data_for_path( $_, $data->{ $_ }, "$indent	" ) foreach ( sort keys %$data );
+}

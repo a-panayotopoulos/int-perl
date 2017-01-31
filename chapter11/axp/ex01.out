@@ -1,0 +1,20 @@
+No day number provided
+No month number provided
+Day #0: ark
+Month #0: diz
+Day #6: kir
+Month #6: lin
+Day number 7 out of range 0-6
+Month #7: sen
+Day number 11 out of range 0-6
+Month #11: dep
+Day number 12 out of range 0-6
+Month number 12 out of range 0-11
+Day #-3: pop
+Month #-3: fiz
+Day number -13 out of range 0-6
+Month number -13 out of range 0-11
+Day #6: kir
+Month #6: lin
+Argument 'b4' is not numeric
+Argument 'b4' is not numeric

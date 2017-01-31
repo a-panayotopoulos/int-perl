@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+
+chdir( $ARGV[0] // "~" );
+
+my @sorted =
+	map $_->{FNAME},
+	sort { $a->{SIZE} <=> $b->{SIZE} }
+	map { FNAME => $_, SIZE => -s },
+	glob '*';
+
+say( "$_\t", -s ) foreach @sorted;
