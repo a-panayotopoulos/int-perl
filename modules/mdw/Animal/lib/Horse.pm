@@ -1,12 +1,12 @@
-package Animal;
+package Horse;
 
 use 5.006;
 use strict;
 use warnings;
-use parent qw(LivingCreature);
+
 =head1 NAME
 
-Animal - The great new Animal!
+Horse - The great new Horse!
 
 =head1 VERSION
 
@@ -23,9 +23,9 @@ Quick summary of what the module does.
 
 Perhaps a little code snippet.
 
-    use Animal;
+    use Horse;
 
-    my $foo = Animal->new();
+    my $foo = Horse->new();
     ...
 
 =head1 EXPORT
@@ -43,20 +43,15 @@ sub function1 {
 }
 
 sub speak {
-  my $class = shift;
-  print "a $class goes ", $class->sound, "!\n";
+  print "a Horse goes neigh!\n";
 }
-
-sub sound {
-  die 'You have to define sound() in a subclass'
-}
-
 =head2 function2
 
 =cut
 
 sub function2 {
 }
+sub sound { 'neigh' }
 
 =head1 AUTHOR
 
@@ -64,8 +59,8 @@ Mark Wignall, C<< <Mark.Wignall at Mastercard.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-mdw at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=mdw>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -75,7 +70,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Animal
+    perldoc Horse
 
 
 You can also look for information at:
@@ -84,19 +79,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=mdw>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/mdw>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/mdw>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/mdw/>
 
 =back
 
@@ -106,7 +101,7 @@ L<http://search.cpan.org/dist/Animal/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Mark Wignall.
+Copyright 2017 Mark Wignall.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -147,4 +142,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of Animal
+1; # End of Horse
