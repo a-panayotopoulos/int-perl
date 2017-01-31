@@ -1,0 +1,2 @@
+#!/bin/bash
+git diff 1ce1a887f01199bd757d452541ae7866f07312f1 18c46df903aa5c41ccdc8fc4a75131fc2ff57c4c

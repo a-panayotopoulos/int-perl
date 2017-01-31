@@ -2,13 +2,12 @@
 use 5.006;
 use strict;
 use warnings;
-use Test::More;
-
-plan tests => 2;
+use Test::More 0.62 tests => 7;
 
 BEGIN {
-    use_ok( 'Animal' ) || print "Bail out!\n";
-    use_ok( 'Cow' ) || print "Bail out!\n";
+	foreach my $class ( qw( LivingCreature Animal Cow Horse Sheep Mouse Person ) ) {
+		use_ok( $class ) or print "Bail out! $class does not compile!\n";
+	}
 }
 
 diag( "Testing Animal $Animal::VERSION, Perl $], $^X" );
