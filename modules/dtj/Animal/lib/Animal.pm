@@ -19,35 +19,43 @@ our $VERSION = '0.01';
 
 
 =head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Animal;
-
-    my $foo = Animal->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+Animal stuff
+=cut
 
 =head1 SUBROUTINES/METHODS
-
-=head2 function1
-
 =cut
 
-sub function1 {
+sub default_color { 'brown' }
+
+sub named {
+  my $class = shift;
+  my $name = shift;
+  my $self = { Name => $name, Color => $class->default_color };
+  bless $self, $class;
 }
 
-=head2 function2
+sub set_name {
+  my $self = shift;
+  $self->{Name} = shift;
+}
 
-=cut
+sub name {
+  my $either = shift;
+  ref $either
+    ? $either->{Name}
+    : "an unnamed $either";
+}
 
-sub function2 {
+sub set_color {
+  my $self = shift;
+  $self->{Color} = shift;
+}
+
+sub color {
+  my $either = shift;
+  ref $either
+    ? $either->{Color}
+    : $either->default_color();
 }
 
 =head1 AUTHOR
@@ -59,41 +67,6 @@ Daniel jones, C<< <dtj at someplace.com> >>
 Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Animal
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker (report bugs here)
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Animal>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Animal>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Animal/>
-
-=back
-
-
-=head1 ACKNOWLEDGEMENTS
 
 
 =head1 LICENSE AND COPYRIGHT
