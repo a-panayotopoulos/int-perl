@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use parent qw( Animal );
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -35,6 +36,17 @@ Beware wooden versions of this module implemented by this author.
 
 sub sound {
 	return 'neigh';
+}
+
+=head2 default_colour
+
+The default colour for this type of animal.
+
+=cut
+
+sub default_colour {
+	ref ( my $class = shift ) and croak "Static method used as instance call";
+	return "brown";
 }
 
 =head1 AUTHOR

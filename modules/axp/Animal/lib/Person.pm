@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use parent qw( LivingCreature );
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -35,8 +36,8 @@ People are overratted.
 =cut
 
 sub speak {
-	my ( $class, $say_what ) = @_;
-	
+	ref ( my $class = shift ) and croak "Static method used as instance call";
+	my $say_what = shift;
 	$say_what ? print "a $class says '$say_what'\n" : $class->SUPER::speak();
 }
 

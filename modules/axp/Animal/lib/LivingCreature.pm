@@ -3,6 +3,7 @@ package LivingCreature;
 use 5.006;
 use strict;
 use warnings;
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -29,7 +30,7 @@ Don't use this class directly; instead instantiate subclasses of it.
 =cut
 
 sub speak {
-	my $class = shift;
+	ref ( my $class = shift ) and croak "Static method used as instance call";
 	print "a $class goes " . $class->sound . "!\n";
 }
 
@@ -38,7 +39,7 @@ sub speak {
 =cut
 
 sub sound {
-	die 'You have to define sound() in a subclass';
+	croak 'You have to define sound() in a subclass';
 }
 
 =head1 AUTHOR

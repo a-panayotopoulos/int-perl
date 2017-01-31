@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use parent qw( Animal );
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -35,6 +36,17 @@ Sheep have many uses.
 
 sub sound {
 	return 'baaaah';
+}
+
+=head2 default_colour
+
+The default colour for this type of animal.
+
+=cut
+
+sub default_colour {
+	ref ( my $class = shift ) and croak "Static method used as instance call";
+	return "white";
 }
 
 =head1 AUTHOR
