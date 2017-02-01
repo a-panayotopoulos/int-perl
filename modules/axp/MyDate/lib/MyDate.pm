@@ -3,10 +3,11 @@ package MyDate;
 use 5.006;
 use strict;
 use warnings;
+use Carp qw( croak );
 
 =head1 NAME
 
-MyDate - The great new MyDate!
+MyDate - Provides information on dates, months and years
 
 =head1 VERSION
 
@@ -16,37 +17,55 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Provides information on dates, months and years
 
-Perhaps a little code snippet.
+	use MyDate;
 
-    use MyDate;
-
-    my $foo = MyDate->new();
-    ...
+	say MyDate->date();
+	say MyDate->month();
+	say MyDate->year();
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 date
+
+Tells us about dates
+
+=head2 month
+
+Tells us about months
+
+=head2 year
+
+Tells us about y'ears
 
 =cut
 
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
+sub AUTOLOAD {
+	our $AUTOLOAD;
+	(my $method = $AUTOLOAD) =~ s/.*:://s; # remove package name
+	my $blurb = "$method: ";
+	my $ok = 1;
+	
+	if ( $method eq "date" ) {
+		$blurb .= "A small fruit which grows on a palm tree.";
+	}
+	elsif ( $method eq "month" ) {
+		$blurb .= "Like a buntterfly, but less colourful.";
+	}
+	elsif ( $method eq "year" ) {
+		$blurb .= "An ear belonging to you.";
+	}
+	else {
+		$ok = 0;
+		$blurb .= "The almighty $_[0] does not know of this concept. Definitely your fault";
+	}
+	
+	$ok ? return $blurb : croak( $blurb );
 }
 
 =head1 AUTHOR
@@ -58,9 +77,6 @@ Alex Panayotopoulos, C<< <alexp at fake.com> >>
 Please report any bugs or feature requests to C<bug-mydate at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MyDate>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 
@@ -90,7 +106,6 @@ L<http://cpanratings.perl.org/d/MyDate>
 L<http://search.cpan.org/dist/MyDate/>
 
 =back
-
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -134,7 +149,6 @@ YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
 CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 
 =cut
 
