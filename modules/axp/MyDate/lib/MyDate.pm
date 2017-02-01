@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use Carp qw( croak );
+use DateTime;
 
 =head1 NAME
 
@@ -66,6 +67,11 @@ sub AUTOLOAD {
 	}
 	
 	$ok ? return $blurb : croak( $blurb );
+}
+
+sub UNIVERSAL::debug {
+	my ( $class, $msg ) = @_;
+	print "At " . DateTime->now . " the almighty $class saw you say '$msg'\n";
 }
 
 =head1 AUTHOR

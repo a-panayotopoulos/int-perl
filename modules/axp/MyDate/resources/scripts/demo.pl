@@ -14,3 +14,4 @@ eval {
 };
 say $@ if $@;
 
+MyDate->debug( "sorry" );
