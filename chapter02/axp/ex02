@@ -1,0 +1,18 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use Module::CoreList;
+use List::Util qw( reduce );
+
+sub release_date_of_module {
+  return $Module::CoreList::released{ Module::CoreList->first_release_by_date( shift ) };
+}
+
+my @modules = sort keys( %{$Module::CoreList::version{5.014002}} );
+
+my $wid = reduce { $a > length( $b ) ? $a : length( $b ) } 0, @modules;
+
+printf "%${wid}s | %s\n", "MODULE", "FIRST RELEASE";
+printf "%s-+--------------\n", '-' x $wid;
+printf "%${wid}s | %s\n", $_, release_date_of_module( $_ ) foreach @modules;

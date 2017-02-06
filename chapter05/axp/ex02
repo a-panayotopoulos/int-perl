@@ -1,0 +1,23 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use CLDR::Number;
+use List::Util qw ( sum );
+
+my %total_bytes;
+
+while (<>) {
+  next if /^#/;
+  my ($source, $destination, $bytes) = split;
+  $total_bytes{$source}{$destination} += $bytes;
+}
+
+my $fmt = CLDR::Number->new( locale => 'en' )->decimal_formatter;
+
+foreach my $src ( sort { sum values $total_bytes{$a} <=> sum values $total_bytes{$b} } keys %total_bytes ) {
+	foreach my $dest ( sort { $total_bytes{$src}{$b}  <=> $total_bytes{$src}{$a} } keys $total_bytes{$src} ) {
+		printf "%s => %s: %s\n", $src, $dest, $fmt->format( $total_bytes{$src}{$dest} );
+	}
+}
+

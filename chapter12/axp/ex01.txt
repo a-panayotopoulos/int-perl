@@ -1,0 +1,33 @@
+Downloading ActiveState Package Repository packlist...not modified
+No missing packages to install
+Added to MANIFEST: Build.PL
+Added to MANIFEST: Changes
+Added to MANIFEST: ignore.txt
+Added to MANIFEST: lib/Animal.pm
+Added to MANIFEST: MANIFEST
+Added to MANIFEST: README
+Added to MANIFEST: t/00-load.t
+Added to MANIFEST: t/manifest.t
+Added to MANIFEST: t/pod-coverage.t
+Added to MANIFEST: t/pod.t
+Added to MANIFEST: xt/boilerplate.t
+Created starter directories and files
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'Animal' version '0.01'
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Building Animal
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+t\00-load.t ....... 1/? # Testing Animal 0.01, Perl 5.016003, C:\Perl64\bin\perl.exe
+t\00-load.t ....... ok
+t\manifest.t ...... skipped: Author tests not required for installation
+t\pod-coverage.t .. skipped: Author tests not required for installation
+t\pod.t ........... skipped: Author tests not required for installation
+All tests successful.
+Files=4, Tests=1,  0 wallclock secs ( 0.05 usr +  0.03 sys =  0.08 CPU)
+Result: PASS

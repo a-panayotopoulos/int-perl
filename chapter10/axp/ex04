@@ -1,0 +1,31 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use warnings;
+use File::Slurp qw( read_dir );
+use File::Basename qw( basename );
+use Cwd qw ( abs_path );
+
+my $dir = $ARGV[0] // '.';
+dump_data_for_path( basename( abs_path( $dir ) ), data_for_path( $dir ) );
+
+sub data_for_path {
+	my $path = shift;
+	
+	return undef if ( -f $path or -l $path ); # files or symbolic links
+	return { map { $_ => data_for_path( "$path/$_" ) } grep /^[^.]/, ( read_dir $path ) } if ( -d $path );
+
+	warn "$path is neither a file nor a directory\n";
+	return undef;
+}
+
+sub dump_data_for_path {
+	my ( $fname, $data, $indent ) = @_;
+	
+	$indent //= "";
+	print "$indent$fname";
+	return say '' if ( !defined $data );
+	return say ", an empty directory" if ( !%$data );
+	say ", with contents:";
+	dump_data_for_path( $_, $data->{ $_ }, "$indent  " ) foreach ( sort keys %$data );
+}

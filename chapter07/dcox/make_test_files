@@ -1,0 +1,8 @@
+#!/bin/bash
+
+days=( Sun Mon Tue Wed Thu Fri Sat )
+
+for i in "${days[@]}"
+do
+  touch --d="`date --date="last $i" +"%Y%m%d 1200"`" $i
+done
