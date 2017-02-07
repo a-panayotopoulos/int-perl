@@ -1,0 +1,5 @@
+date: A small fruit which grows on a palm tree.
+month: Like a buntterfly, but less colourful.
+year: An ear belonging to you.
+hour: The almighty MyDate does not know of this concept. Definitely your fault at .\resources\scripts\demo.pl line 13.
+
