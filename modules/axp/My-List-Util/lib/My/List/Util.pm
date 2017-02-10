@@ -3,6 +3,7 @@ package My::List::Util;
 use 5.006;
 use strict;
 use warnings;
+use Exporter qw( import );
 
 =head1 NAME
 
@@ -16,6 +17,8 @@ Version 0.01
 
 our $VERSION = '0.01';
 
+our @EXPORT_OK = qw( sum shuffle );
+our %EXPORT_TAGS = ( all => \@EXPORT_OK );
 
 =head1 SYNOPSIS
 
