@@ -22,12 +22,13 @@ our @day_of_week = qw( ark dip wap sen pop sep kir );
 our @month_name = qw( diz pod bod rod sip wax lin sen kun fiz nap dep );
 
 our @EXPORT_OK = qw( number_to_day_name number_to_month_name );
+our %EXPORT_TAGS = ( all => \@EXPORT_OK );
 
 =head1 SYNOPSIS
 
 Native language functions for day and month names.
 
-    use NatLang qw ( number_to_day_name number_to_month_name );
+    use NatLang qw ( :all );
 
 	for ( my $dow = 0; $dow < 7; $dow++ ) {
 		say "Day $dow is " . number_to_day_name( $dow );
