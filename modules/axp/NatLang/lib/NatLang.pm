@@ -3,10 +3,11 @@ package NatLang;
 use 5.006;
 use strict;
 use warnings;
+use Carp qw( croak );
 
 =head1 NAME
 
-NatLang - The great new NatLang!
+NatLang - Native language functions
 
 =head1 VERSION
 
@@ -16,37 +17,53 @@ Version 0.01
 
 our $VERSION = '0.01';
 
+our @day_of_week = qw( ark dip wap sen pop sep kir );
+our @month_name = qw( diz pod bod rod sip wax lin sen kun fiz nap dep );
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
+Native language functions for day and month names.
 
     use NatLang;
 
-    my $foo = NatLang->new();
-    ...
+	for ( my $dow = 0; $dow < 7; $dow++ ) {
+		say "Day $dow is " . NatLang::number_to_day_name( $dow );
+	}
+
+	for ( my $mon = 0; $mon < 12; $mon++ ) {
+		say "Month $mon is " . NatLang::number_to_month_name( $mon );
+	}
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 number_to_day_name
+
+Names for days of week;
+	0 = Sunday
+	6 = Saturday
 
 =cut
 
-sub function1 {
+sub number_to_day_name {
+	my $num = shift // croak "No day number provided\n";
+	croak "Argument '$num' is not numeric\n" unless $num =~ /^-?\d+$/;
+	return $day_of_week[$num] // croak sprintf( "Day number %d out of range 0-%d\n", $num, $#day_of_week );
 }
 
-=head2 function2
+=head2 number_to_month_name
+
+Names for months of year;
+	0 = January
+	11 = December
 
 =cut
 
-sub function2 {
+sub number_to_month_name {
+	my $num = shift // croak "No month number provided\n";
+	croak "Argument '$num' is not numeric\n" unless $num =~ /^-?\d+$/;
+	return $month_name[$num] // croak sprintf( "Month number %d out of range 0-%d\n", $num, $#month_name );
 }
 
 =head1 AUTHOR
@@ -59,15 +76,11 @@ Please report any bugs or feature requests to C<bug-natlang at rt.cpan.org>, or 
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=NatLang>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc NatLang
-
 
 You can also look for information at:
 
@@ -91,9 +104,7 @@ L<http://search.cpan.org/dist/NatLang/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -134,7 +145,6 @@ YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
 CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 
 =cut
 
