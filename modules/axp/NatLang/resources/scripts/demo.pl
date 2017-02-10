@@ -3,7 +3,7 @@ use warnings;
 
 use lib './lib'; # TODO: remove this after we learn how to install things
 
-require NatLang;
+use NatLang qw ( number_to_day_name number_to_month_name );
 
 use constant {
         LOCALTIME_EPOCH => 1900,
@@ -13,4 +13,4 @@ use constant {
 my ( $date, $month, $year, $dow ) = (localtime)[3..6];
 $year += LOCALTIME_EPOCH - NATIVE_EPOCH;
 
-printf "Gazad meh %so %d %s, %d\n", NatLang::number_to_day_name( $dow ), $date, NatLang::number_to_month_name( $month ), $year;
+printf "Gazad meh %so %d %s, %d\n", number_to_day_name( $dow ), $date, number_to_month_name( $month ), $year;

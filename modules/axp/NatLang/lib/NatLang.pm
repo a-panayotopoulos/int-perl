@@ -4,6 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use Carp qw( croak );
+use Exporter qw( import );
 
 =head1 NAME
 
@@ -20,18 +21,20 @@ our $VERSION = '0.01';
 our @day_of_week = qw( ark dip wap sen pop sep kir );
 our @month_name = qw( diz pod bod rod sip wax lin sen kun fiz nap dep );
 
+our @EXPORT_OK = qw( number_to_day_name number_to_month_name );
+
 =head1 SYNOPSIS
 
 Native language functions for day and month names.
 
-    use NatLang;
+    use NatLang qw ( number_to_day_name number_to_month_name );
 
 	for ( my $dow = 0; $dow < 7; $dow++ ) {
-		say "Day $dow is " . NatLang::number_to_day_name( $dow );
+		say "Day $dow is " . number_to_day_name( $dow );
 	}
 
 	for ( my $mon = 0; $mon < 12; $mon++ ) {
-		say "Month $mon is " . NatLang::number_to_month_name( $mon );
+		say "Month $mon is " . number_to_month_name( $mon );
 	}
 
 =head1 EXPORT
