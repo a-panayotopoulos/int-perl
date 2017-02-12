@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-require 'IslanderDates.pm';
+use IslanderDates qw( number_to_day_name );
 
 while ( <> ) {
     chomp;
@@ -13,4 +13,3 @@ while ( <> ) {
     };
     print "Error: $@" if $@;
 }
-
