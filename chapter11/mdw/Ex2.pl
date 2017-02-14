@@ -6,7 +6,7 @@ use warnings;
 use v5.12;
 
 require 'Island.pm';
-use Island;
+use Island qw(:all);
 
 my($sec, $min, $hour, $mday, $mon, $year, $wday) = localtime; 
 
