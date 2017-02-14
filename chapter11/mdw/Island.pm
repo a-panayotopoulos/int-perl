@@ -7,6 +7,10 @@ use v5.12;
 
 package Island 0.11;
 
+use Exporter qw(import);
+
+our @EXPORT = qw( number_to_day_name number_to_month_name );
+
 #Translations
 our @day = qw(ark dip wap sen pop sep kir);
 our @month = qw(diz pod bod rod sip wax lin sen kun fiz nap dep);
