@@ -5,6 +5,8 @@ use strict;
 use warnings;
 use parent qw( Horse );
 use Carp qw( croak );
+use File::Slurp qw ( read_file write_file );
+use JSON;
 
 =head1 NAME
 
@@ -94,6 +96,41 @@ Show some standings for this racehorse
 sub standings {
 	ref ( my $self = shift ) or croak "Instance variable needed";
 	return join ', ', map "$self->{$_} $_", qw( wins places shows losses );
+}
+
+=head2 tie
+
+Tie the horse's standings to a particular file
+
+=cut
+
+sub tie {
+	ref ( my $self = shift ) or croak "Instance variable needed";
+	my $stfile = shift or croak "Standings file needed";
+
+	if ( $self->{wins} || $self->{places} || $self->{shows} || $self->{losses} ) {
+		croak "Can't tie; standings already altered";
+	}
+
+	if ( -e $stfile ) {
+		my $data = from_json read_file $stfile;
+		$self->{$_} = $data->{$_} foreach qw( wins places shows losses );
+	}
+
+	$self->{stfile} = $stfile;
+	return $self;
+}
+
+sub DESTROY {
+	ref ( my $self = shift ) or croak "Instance variable needed";
+	$self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
+
+	if ( $self->{stfile} ) {
+		my %data = map { $_ => $self->{$_} } qw( wins places shows losses );
+		write_file $self->{stfile}, to_json \%data;
+	}
+
+	return 1;
 }
 
 =head1 AUTHOR
