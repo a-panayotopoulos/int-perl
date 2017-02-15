@@ -20,3 +20,4 @@
 | Chapter 19 reviewer → | dtj | dcox | pxd |      | mdw |     | slc | axp |          pxd |
 | Chapter 20 reviewer → | dcox | pxd | mdw |      | slc |     | axp | dtj |          mdw |
 | Chapter 21 reviewer → | pxd | mdw | slc |      | axp |     | dtj | dcox |          slc |
+| **Submitter →** | **axp** | **dtj** | **dcox** | **ryan** | **pxd** | **sxg** | **mdw** | **slc** | **meeting lead** |

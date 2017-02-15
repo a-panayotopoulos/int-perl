@@ -4,10 +4,10 @@ use warnings;
 use Module::Build;
 
 my $builder = Module::Build->new(
-    module_name         => 'Animal',
+    module_name         => 'MyDate',
     license             => 'artistic_2',
-    dist_author         => q{pxd <abc123@xyz.com>},
-    dist_version_from   => 'lib/Animal.pm',
+    dist_author         => q{Daniel jones <dtj@someplace.com>},
+    dist_version_from   => 'lib/MyDate.pm',
     release_status      => 'stable',
     configure_requires => {
         'Module::Build' => 0,
@@ -19,7 +19,7 @@ my $builder = Module::Build->new(
         #'ABC'              => 1.6,
         #'Foo::Bar::Module' => 5.0401,
     },
-    add_to_cleanup     => [ 'Animal-*' ],
+    add_to_cleanup     => [ 'MyDate-*' ],
     create_makefile_pl => 'traditional',
 );
 

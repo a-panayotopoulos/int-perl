@@ -3,7 +3,7 @@ package Animal;
 use 5.006;
 use strict;
 use warnings;
-
+use parent qw(LivingCreature);
 =head1 NAME
 
 Animal - The great new Animal!
@@ -40,6 +40,50 @@ if you don't export anything, such as for a purely object-oriented module.
 =cut
 
 sub function1 {
+}
+
+sub speak {
+  my $class = shift;
+  print "a $class goes ", $class->sound, "!\n";
+}
+
+sub sound {
+  die 'You have to define sound() in a subclass'
+}
+
+sub default_color { 'brown' }
+
+sub name {
+  my $either = shift;
+  ref $either
+    ? $either->{Name}
+    : "an unnamed $either";
+}
+
+sub named {
+  my $class = shift;
+  my $name = shift;
+  my $self = { Name => $name, Color => $class->default_color };
+  bless $self, $class;
+}
+
+sub set_color {
+  my $self = shift;
+  $self->{Color} = shift;
+  $self;
+}
+
+sub set_name {
+  my $self = shift;
+  $self->{Name} = shift;
+  $self;
+}
+
+sub color {
+  my $either = shift;
+  ref $either
+    ? $either->{Color}
+    : "white";
 }
 
 =head2 function2
