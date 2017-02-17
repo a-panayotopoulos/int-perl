@@ -1,0 +1,15 @@
+     X     
+    XXX    
+   XXXXX   
+
+Printed from the one liner
+
+     X     
+    XXX    
+   XXXXX   
+
+Printed from the more readable version
+
+     X     
+    XXX    
+   XXXXX   

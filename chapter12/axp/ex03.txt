@@ -1,0 +1,33 @@
+Downloading ActiveState Package Repository packlist...not modified
+No missing packages to install
+Downloading ActiveState Package Repository packlist...not modified
+No missing packages to install
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Can't find dist packages without a MANIFEST file
+Run 'Build manifest' to generate one
+
+WARNING: Possible missing or corrupt 'MANIFEST' file.
+Nothing to enter for 'provides' field in metafile.
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'Animal' version '0.01'
+'.' is not recognized as an internal or external command,
+operable program or batch file.
+Created starter directories and files
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Can't find dist packages without a MANIFEST file
+Run 'Build manifest' to generate one
+
+WARNING: Possible missing or corrupt 'MANIFEST' file.
+Nothing to enter for 'provides' field in metafile.
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'Animal' version '0.01'
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Building Animal
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+No tests defined.

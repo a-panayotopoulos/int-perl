@@ -1,0 +1,5 @@
+author: Sean Clark
+email: sean.clark@mastercard.com
+builder: Module::Build
+verbose: 1
+plugins: Module::Starter::AddModule
