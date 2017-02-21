@@ -4,6 +4,10 @@ use 5.006;
 use strict;
 use warnings;
 
+use Exporter qw(import);
+
+our @EXPORT = qw( sum shuffled );
+
 =head1 NAME
 
 My::List::Utils - The great new My::List::Utils!
