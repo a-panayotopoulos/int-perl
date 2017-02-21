@@ -3,6 +3,12 @@ package IslanderDates;
 use strict;
 use warnings;
 use Scalar::Util qw ( looks_like_number );
+use Exporter qw( import );
+
+our @EXPORT_OK = qw ( number_to_day_name number_to_month_name );
+our %EXPORT_TAGS = (
+  all => [ @EXPORT_OK ]
+);
 
 my @day = qw(ark dip wap sen pop sep kir);
 my @month = qw(diz pod bod rod sip wax lin sen kun fiz nap dep);
@@ -14,7 +20,7 @@ sub number_to_day_name {
     die "Error getting day name: $@" if $@;
     return $day[$number];
 }
- 
+
 sub number_to_month_name {
     my $number = shift @_;
     eval {
@@ -25,7 +31,7 @@ sub number_to_month_name {
 }
 
 sub validate_number {
-    my ( $number, $min, $max ) = @_; 
+    my ( $number, $min, $max ) = @_;
 
     # The below if statements are all Christmas presents for AlexD
     if ( !defined $number ){
@@ -35,7 +41,7 @@ sub validate_number {
     if ( !looks_like_number $number ) {
         die "Input was not a number";
     }
-    
+
     if ( $number < $min || $number > $max ) {
         die "Number was out of range $min - $max";
     }
