@@ -9,6 +9,6 @@ use Data::Dumper;
 
 my @list = ( 1, 2, 3, 4, 5 );
 
-my @shuffled = My::List::Utils->shuffled( @list );
+my @shuffled = shuffled( @list );
 
 print Dumper(@shuffled);

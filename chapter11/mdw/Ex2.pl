@@ -6,11 +6,12 @@ use warnings;
 use v5.12;
 
 require 'Island.pm';
+use Island qw(:all);
 
 my($sec, $min, $hour, $mday, $mon, $year, $wday) = localtime; 
 
-my $day = Island::number_to_day_name( $wday -1 ); 
-my $month = Island::number_to_month_name( $mon );
+my $day = number_to_day_name( $wday -1 ); 
+my $month = number_to_month_name( $mon );
 
 $year += 1900;
 
