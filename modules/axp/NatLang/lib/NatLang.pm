@@ -1,13 +1,14 @@
-package My::List::Util;
+package NatLang;
 
 use 5.006;
 use strict;
 use warnings;
+use Carp qw( croak );
 use Exporter qw( import );
 
 =head1 NAME
 
-My::List::Util - Some list utility functions
+NatLang - Native language functions
 
 =head1 VERSION
 
@@ -17,68 +18,73 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-our @EXPORT_OK = qw( sum shuffle );
+our @day_of_week = qw( ark dip wap sen pop sep kir );
+our @month_name = qw( diz pod bod rod sip wax lin sen kun fiz nap dep );
+
+our @EXPORT_OK = qw( number_to_day_name number_to_month_name );
 our %EXPORT_TAGS = ( all => \@EXPORT_OK );
 
 =head1 SYNOPSIS
 
-Provides sum and shuffle functions;
+Native language functions for day and month names.
 
-    use My::List::Util;
+    use NatLang qw ( :all );
 
-    my $six = My::List::Util::sum( 1, 2, 3 );
-	my $random = My::List::Util::shuffle( 8, 6, 7, 5, 3, 0, 9 );
-    ...
+	for ( my $dow = 0; $dow < 7; $dow++ ) {
+		say "Day $dow is " . number_to_day_name( $dow );
+	}
+
+	for ( my $mon = 0; $mon < 12; $mon++ ) {
+		say "Month $mon is " . number_to_month_name( $mon );
+	}
 
 =head1 EXPORT
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sum
+=head2 number_to_day_name
 
-Sum up all the numbers in a list
+Names for days of week;
+	0 = Sunday
+	6 = Saturday
 
 =cut
 
-sub sum {
-	my $tot = 0;
-	$tot += $_ foreach ( @_ );
-	return $tot;
+sub number_to_day_name {
+	my $num = shift // croak "No day number provided\n";
+	croak "Argument '$num' is not numeric\n" unless $num =~ /^-?\d+$/;
+	return $day_of_week[$num] // croak sprintf( "Day number %d out of range 0-%d\n", $num, $#day_of_week );
 }
 
-=head2 shuffle
+=head2 number_to_month_name
 
-Shuffle a list of items
+Names for months of year;
+	0 = January
+	11 = December
 
 =cut
 
-sub shuffle {
-	# Using Fisher-Yates
-	my @arr = @_ or return;
-	my $i = @arr;
-	while ( --$i ) {
-		my $j = int rand( $i + 1 );
-		@arr[$i, $j] = @arr[$j, $i];
-	}
-	
-	return @arr;
+sub number_to_month_name {
+	my $num = shift // croak "No month number provided\n";
+	croak "Argument '$num' is not numeric\n" unless $num =~ /^-?\d+$/;
+	return $month_name[$num] // croak sprintf( "Month number %d out of range 0-%d\n", $num, $#month_name );
 }
 
 =head1 AUTHOR
 
-Alex Panayotopoulos, C<< <alex at fake.com> >>
+Alex Panayotopoulos, C<< <alexp at fake.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-my-list-util at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=My-List-Util>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-natlang at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=NatLang>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc My::List::Util
+    perldoc NatLang
 
 You can also look for information at:
 
@@ -86,19 +92,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=My-List-Util>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=NatLang>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/My-List-Util>
+L<http://annocpan.org/dist/NatLang>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/My-List-Util>
+L<http://cpanratings.perl.org/d/NatLang>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/My-List-Util/>
+L<http://search.cpan.org/dist/NatLang/>
 
 =back
 
@@ -146,4 +152,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of My::List::Util
+1; # End of NatLang
