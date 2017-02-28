@@ -16,7 +16,7 @@ sub default_colour {
 sub name {
   my $either = shift;
   ref $either
-    ? $either->{name}
+    ? $either->{name} // 'Unknown'
     : "an unnamed $either";
 }
 
