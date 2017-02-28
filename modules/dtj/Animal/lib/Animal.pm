@@ -58,6 +58,11 @@ sub color {
     : $either->default_color();
 }
 
+sub DESTROY {
+  my $self = shift;
+  print '[', $self->name, " has died.]\n";
+}
+
 =head1 AUTHOR
 
 Daniel jones, C<< <dtj at someplace.com> >>
