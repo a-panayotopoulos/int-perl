@@ -44,4 +44,9 @@ sub color {
   ref $self ? $self->{Color} : $self->default_color;
 }
 
+sub DESTROY {
+  my $self = shift;
+  print '[', $self->name, " has died.]\n";
+}
+
 1; # End of Animal

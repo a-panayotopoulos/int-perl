@@ -1,0 +1,21 @@
+===============================================================
+
+Billy Boy has standings of: 3 wins, 0 places, 1 shows, 1 losses.
+Lets record the stats to racehorse.data..
+
+===============================================================
+
+racehorse.data has some previous data
+Billy Boy has standings of: 6 wins, 0 places, 2 shows, 2 losses.
+Lets record the stats to racehorse.data..
+
+==============================================================
+
+racehorse.data has some previous data
+Billy Boy has standings of: 9 wins, 0 places, 3 shows, 3 losses.
+Lets record the stats to racehorse.data..
+
+==============================================================
+
+
+
