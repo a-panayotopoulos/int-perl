@@ -4,11 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use Carp qw( croak );
-use File::Slurp qw ( read_file write_file );
-use JSON;
 use Moose;
-use Moose::Meta::Attribute::Native::Trait::Counter;
 use namespace::autoclean;
 
 extends 'Horse';
