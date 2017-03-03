@@ -2,7 +2,7 @@
 use 5.006;
 use strict;
 use warnings;
-use Test::More 0.62 tests => 19;
+use Test::More 0.62 tests => 17;
 use Test::Output;
 use Test::Fatal;
 
@@ -13,7 +13,6 @@ BEGIN {
 diag( "Testing Animal $Animal::VERSION, Perl $], $^X" );
 
 # subroutines are defined
-ok( defined &Animal::named, 'Animal::named is defined' );
 ok( defined &Animal::name, 'Animal::name is defined' );
 ok( defined &Animal::colour, 'Animal::colour is defined' );
 ok( defined &Animal::default_colour, 'Animal::default_colour is defined' );
@@ -30,11 +29,10 @@ ok( defined &Animal::default_colour, 'Animal::default_colour is defined' );
 	}
 }
 
-# Test 'named' (a constructor)
-my $muppet = Muppet->named( 'Beaker' );
+# Test construction
+my $muppet = Muppet->new( name => 'Beaker' );
 is( ref( $muppet ), 'Muppet', "Created a Muppet instance" );
-like( exception { Muppet->named }, qr/^Need to provide a name/, 'named() without params' );
-like( exception { $muppet->named }, qr/^Static constructor used as instance call/, 'try to call named() on an instance' );
+like( exception { Muppet->new }, qr/^Attribute \(name\) is required/, 'new() without params' );
 
 # Test 'name' (an instance getter/setter)
 like( exception { Muppet->name }, qr/^Instance variable needed/, 'try to get a name statically' );

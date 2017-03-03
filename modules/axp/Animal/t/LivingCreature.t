@@ -2,7 +2,7 @@
 use 5.006;
 use strict;
 use warnings;
-use Test::More 0.62 tests => 7;
+use Test::More 0.62 tests => 9;
 use Test::Output;
 use Test::Fatal;
 
@@ -13,6 +13,7 @@ BEGIN {
 diag( "Testing LivingCreature $LivingCreature::VERSION, Perl $], $^X" );
 
 # subroutines are defined in LivingCreature.pm
+ok( defined &LivingCreature::new, 'LivingCreature::new is defined' );
 ok( defined &LivingCreature::speak, 'LivingCreature::speak is defined' );
 ok( defined &LivingCreature::sound, 'LivingCreature::sound is defined' );
 
@@ -32,6 +33,7 @@ like( exception { LivingCreature->speak() }, $expected_error, 'speak() dies with
 
 stdout_is { MahnaMahna->speak() } "a MahnaMahna goes Mahna Mahna!\n", "speak() is as expected";
 
-# A living creature instance (N.B. instances of LivingCreature are not yet supported)
-my $deedoodoo = bless {}, 'MahnaMahna';
-like( exception { $deedoodoo->speak }, qr/^Static method used as instance call/, 'speak called on an instance' );
+# A living creature instance
+my $deedoodoo = MahnaMahna->new();
+like( exception { $deedoodoo->speak }, qr/^Class method used as instance call/, 'speak called on an instance' );
+like( exception { $deedoodoo->new }, qr/^Static constructor used as instance call/, 'try to call new() on an instance' );

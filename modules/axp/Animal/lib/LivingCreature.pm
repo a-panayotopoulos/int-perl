@@ -3,7 +3,10 @@ package LivingCreature;
 use 5.006;
 use strict;
 use warnings;
+
 use Carp qw( croak );
+use Moose;
+use namespace::autoclean;
 
 =head1 NAME
 
@@ -21,7 +24,19 @@ our $VERSION = '0.01';
 
 Don't use this class directly; instead instantiate subclasses of it.
 
-=head1 EXPORT
+=cut
+
+our $__constructor_check = sub {
+	ref ( shift ) and croak 'Static constructor used as instance call';
+};
+our $__static_check = sub {
+	ref ( shift ) and croak 'Class method used as instance call';
+};
+our $__instance_check = sub {
+	ref ( shift ) or croak 'Instance variable needed';
+};
+
+before 'new' => $__constructor_check;
 
 =head1 SUBROUTINES/METHODS
 
@@ -30,9 +45,11 @@ Don't use this class directly; instead instantiate subclasses of it.
 =cut
 
 sub speak {
-	ref ( my $class = shift ) and croak "Static method used as instance call";
+	my $class = shift;
 	print "a $class goes " . $class->sound . "!\n";
 }
+
+before 'speak' => $__static_check;
 
 =head2 sound
 
@@ -124,7 +141,8 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 =cut
+
+__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
 
 1; # End of LivingCreature

@@ -16,7 +16,7 @@ ok( defined &Cow::sound, 'Cow::sound is defined' );
 ok( defined &Cow::default_colour, 'Cow::default_colour is defined' );
 
 # a cow instance
-my $daisy = Cow->named( 'Daisy' );
+my $daisy = Cow->new( name => 'Daisy' );
 
 # a cow says moooo
 is( Cow->sound(), "moooo", "A cow says moooo" );
@@ -24,4 +24,4 @@ is( $daisy->sound(), "moooo", "Daisy says moooo" );
 
 # Cows are white and black
 is( Cow->default_colour(), "white and black", "Cow tend to be white and black" );
-like( exception { $daisy->default_colour() }, qr/^Static method used as instance call/, 'default_colour is static' );
+like( exception { $daisy->default_colour() }, qr/^Class method used as instance call/, 'default_colour is static' );

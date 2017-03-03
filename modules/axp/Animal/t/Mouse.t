@@ -18,7 +18,7 @@ ok( defined &Mouse::speak, 'Mouse::speak is defined' );
 ok( defined &Mouse::default_colour, 'Mouse::default_colour is defined' );
 
 # a mouse instance
-my $mickey = Mouse->named( 'Mickey' );
+my $mickey = Mouse->new( name => 'Mickey' );
 
 # Test mouse sound
 is( Mouse->sound(), "squeak", "A Mouse says squeak" );
@@ -32,4 +32,4 @@ stdout_is { $mickey->speak() } "Mickey goes squeak!\n[but you can barely hear it
 
 # Mice are grey
 is( Mouse->default_colour(), "grey", "Mice tend to be white and black" );
-like( exception { $mickey->default_colour() }, qr/^Static method used as instance call/, 'default_colour is static' );
+like( exception { $mickey->default_colour() }, qr/^Class method used as instance call/, 'default_colour is static' );
