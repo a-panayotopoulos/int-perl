@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Carp qw( croak );
-use Moose;
+use Moose::Role;
 use namespace::autoclean;
 
 =head1 NAME
@@ -45,19 +45,17 @@ before 'new' => $__constructor_check;
 =cut
 
 sub speak {
-	my $class = shift;
+	ref ( my $class = shift ) and croak 'Class method used as instance call';
 	print "a $class goes " . $class->sound . "!\n";
 }
 
-before 'speak' => $__static_check;
-
 =head2 sound
+
+Define this in subclasses
 
 =cut
 
-sub sound {
-	croak 'You have to define sound() in a subclass';
-}
+requires 'sound';
 
 =head1 AUTHOR
 
@@ -142,7 +140,5 @@ CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
-
-__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
 
 1; # End of LivingCreature

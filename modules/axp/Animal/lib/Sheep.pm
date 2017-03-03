@@ -7,7 +7,7 @@ use warnings;
 use Moose;
 use namespace::autoclean;
 
-extends 'Animal';
+with 'Animal';
 
 =head1 NAME
 

@@ -7,7 +7,7 @@ use warnings;
 use Moose;
 use namespace::autoclean;
 
-extends 'LivingCreature';
+with 'LivingCreature';
 
 =head1 NAME
 
@@ -40,7 +40,7 @@ People are overratted.
 
 sub speak {
 	my ( $class, $say_what ) = @_;
-	$say_what ? print "a $class says '$say_what'\n" : $class->SUPER::speak();
+	$say_what ? print "a $class says '$say_what'\n" : $class->LivingCreature::speak();
 }
 
 before 'speak' => $LivingCreature::__static_check;

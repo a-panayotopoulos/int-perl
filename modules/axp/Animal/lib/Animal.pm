@@ -5,10 +5,10 @@ use strict;
 use warnings;
 
 use Carp qw( croak );
-use Moose;
+use Moose::Role;
 use namespace::autoclean;
 
-extends 'LivingCreature';
+with 'LivingCreature';
 
 =head1 NAME
 
@@ -66,9 +66,7 @@ The default colour for this type of animal.
 
 =cut
 
-sub default_colour {
-	croak 'You have to define default_colour() in a subclass';
-}
+requires 'default_colour';
 
 =head2 speak
 
@@ -76,7 +74,7 @@ sub default_colour {
 
 sub speak {
 	my $either = shift;
-	ref ( $either ) ? print $either->name . " goes " . $either->sound . "!\n" : $either->SUPER::speak();
+	ref ( $either ) ? print $either->name . " goes " . $either->sound . "!\n" : $either->LivingCreature::speak();
 }
 
 =head1 AUTHOR
@@ -162,7 +160,5 @@ CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
-
-__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
 
 1; # End of Animal

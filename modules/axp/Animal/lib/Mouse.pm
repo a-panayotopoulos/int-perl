@@ -7,7 +7,7 @@ use warnings;
 use Moose;
 use namespace::autoclean;
 
-extends 'Animal';
+with 'Animal';
 
 =head1 NAME
 
@@ -47,7 +47,7 @@ sub sound {
 
 sub speak {
 	my $either = shift;
-	$either->SUPER::speak( @_ );
+	$either->Animal::speak( @_ );
 	print "[but you can barely hear it!]\n";
 }
 
