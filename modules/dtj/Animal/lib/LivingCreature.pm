@@ -4,12 +4,10 @@ use 5.006;
 use strict;
 use warnings;
 
-use Moose;
+use Moose::Role;
 use namespace::autoclean;
 
-has 'sound' => ( is => 'ro', default => sub {
-  confess shift, " needs to define sound!"
-  } );
+requires qw( sound );
 
 has 'name' => ( is => 'rw', default => 'Joe' );
 

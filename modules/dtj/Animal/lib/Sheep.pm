@@ -7,9 +7,11 @@ use warnings;
 use Moose;
 use namespace::autoclean;
 
-extends 'Animal';
-
 has 'sound' => ( is => 'ro', default => 'baaaah' );
+
+with 'Animal';
+
+
 has 'color' => ( is => 'rw', default => 'white' );
 
 =head1 NAME

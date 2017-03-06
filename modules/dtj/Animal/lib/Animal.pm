@@ -4,10 +4,10 @@ use 5.006;
 use strict;
 use warnings;
 
-use Moose;
+use Moose::Role;
 use namespace::autoclean;
 
-extends 'LivingCreature';
+with  'LivingCreature';
 
 has 'color' => ( is => 'rw' );
 

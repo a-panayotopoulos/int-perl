@@ -7,9 +7,9 @@ use warnings;
 use Moose;
 use namespace::autoclean;
 
-extends 'Animal';
-
 has 'sound' => ( is => 'ro', default => 'neigh' );
+
+with 'Animal';
 
 =head1 NAME
 
