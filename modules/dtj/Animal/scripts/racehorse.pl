@@ -9,9 +9,9 @@ use lib "$FindBin::Bin/../lib";
 use RaceHorse;
 
 my @horses;
-push @horses, RaceHorse->named('Billy Boy');
-push @horses, RaceHorse->named('Furious D');
-push @horses, RaceHorse->named('My Little Pony');
+push @horses, RaceHorse->new( name =>'Billy Boy');
+push @horses, RaceHorse->new( name => 'Furious D');
+push @horses, RaceHorse->new( name => 'My Little Pony');
 
 $horses[0]->won;
 $horses[1]->lost;

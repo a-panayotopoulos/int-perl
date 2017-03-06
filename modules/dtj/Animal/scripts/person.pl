@@ -9,8 +9,10 @@ use lib "$FindBin::Bin/../lib";
 use Cow;
 use Person;
 
-Cow->speak;
-Cow->speak( "I reject your reality and substitute my own" );
+my $cow = Cow->new;
+$cow->speak;
+$cow->speak( "I reject your reality and substitute my own" );
 
-Person->speak;
-Person->speak( "I reject your reality and substitute my own" );
+my $person = Person->new;
+$person->speak;
+$person->speak( "I reject your reality and substitute my own" );

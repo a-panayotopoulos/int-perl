@@ -18,18 +18,19 @@ while ( <> ) {
     chomp;
     my $input = $_;
 
-    push @animals, $input;
-}
-
-foreach my $animal ( @animals ) {
-    eval {
-        $animal->speak;
+    my $animal =  eval {
+      return $input->new;
     };
 
     if ( $@ ) {
-        # It would be nicer to warn them when the entered the animals
-        print "'$animal' was not a valid animal\n";
+        print "'$input' was not a valid animal ($@) \n";
     }
+
+    push @animals, $animal;
 }
 
+foreach my $animal ( @animals ) {
+  $animal->speak;
 
+
+}

@@ -3,7 +3,15 @@ package Animal;
 use 5.006;
 use strict;
 use warnings;
-use parent qw(LivingCreature);
+
+use Moose;
+use namespace::autoclean;
+
+extends 'LivingCreature';
+
+has 'color' => ( is => 'rw' );
+
+
 
 =head1 NAME
 
@@ -17,7 +25,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 Animal stuff
 =cut
@@ -25,43 +32,6 @@ Animal stuff
 =head1 SUBROUTINES/METHODS
 =cut
 
-sub default_color { 'brown' }
-
-sub named {
-  my $class = shift;
-  my $name = shift;
-  my $self = { Name => $name, Color => $class->default_color };
-  bless $self, $class;
-}
-
-sub set_name {
-  my $self = shift;
-  $self->{Name} = shift;
-}
-
-sub name {
-  my $either = shift;
-  ref $either
-    ? $either->{Name}
-    : "an unnamed $either";
-}
-
-sub set_color {
-  my $self = shift;
-  $self->{Color} = shift;
-}
-
-sub color {
-  my $either = shift;
-  ref $either
-    ? $either->{Color}
-    : $either->default_color();
-}
-
-sub DESTROY {
-  my $self = shift;
-  print '[', $self->name, " has died.]\n";
-}
 
 =head1 AUTHOR
 

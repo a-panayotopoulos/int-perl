@@ -3,7 +3,13 @@ package Person;
 use 5.006;
 use strict;
 use warnings;
-use parent qw(LivingCreature);
+
+use Moose;
+use namespace::autoclean;
+
+extends 'Animal';
+
+has 'sound' => ( is => 'ro', default => 'Hmmmmmmmm' );
 
 =head1 NAME
 
@@ -40,20 +46,16 @@ if you don't export anything, such as for a purely object-oriented module.
 The sound the person makes
 =cut
 
-sub sound {
-    'Hmmmmmmmm'
-}
-
 sub speak {
     my ( $class, $phrase ) = @_;
-    
+
     if ( $phrase ) {
-        print "a $class goes ", $phrase, "!\n";
+        printf "a %s goes %s!\n", ref $class, $phrase;
     } else {
         $class->SUPER::speak();
     }
 }
-       
+
 =head1 AUTHOR
 
 Daniel jones, C<< <dtj at someplace.com> >>
