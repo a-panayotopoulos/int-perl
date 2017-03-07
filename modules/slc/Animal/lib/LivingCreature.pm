@@ -1,45 +1,23 @@
 package LivingCreature;
 
-use Carp qw(croak);
+use Moose;
+use namespace::autoclean;
 
-sub named {
-  my $class = shift;
-  my $name = shift;
-  my $self = { name => $name, colour => $class->default_colour };
-  bless $self, $class;
-}
+has 'name'  => ( is => 'rw' );
+has 'color' => ( is => 'rw', default => sub { shift->default_colour() } );
+has 'sound' => ( is => 'ro', default => sub {
+  confess shift, " needs to define sound!"
+  } );
 
 sub default_colour {
     return 'unknown';
-}
-
-sub name {
-  my $either = shift;
-  ref $either
-    ? $either->{name} // 'Unknown'
-    : "an unnamed $either";
-}
-
-sub set_name {
-    ref(my $self = shift) or croak "instance variable needed";
-    $self->{name} = $_[0];
-}
-
-sub set_colour {
-    ref(my $self = shift) or croak "instance variable needed";
-    $self->{colour} = $_[0];
-}
-
-sub colour {
-  my $either = shift;
-  ref $either
-    ? $either->{colour}
-    : $either->default_colour();
 }
 
 sub speak {
   my $self = shift;
   print $self->name, ' goes ', $self->sound, "\n";
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;

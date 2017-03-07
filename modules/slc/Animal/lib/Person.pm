@@ -1,6 +1,11 @@
 package Person;
 
-use parent qw(LivingCreature);
+use Moose;
+use namespace::autoclean;
+
+extends 'LivingCreature';
+
+has 'sound' => ( is => 'ro', default => 'hmmm hmm hmmmmmmm' );
 
 sub default_colour {
     return 'white';
@@ -17,6 +22,6 @@ sub speak {
   }
 }
 
-sub sound { 'hmmm hmm hmmmmmmm' }
+__PACKAGE__->meta->make_immutable;
 
 1;

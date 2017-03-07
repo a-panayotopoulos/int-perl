@@ -1,6 +1,12 @@
 package Cow;
-use parent qw(Animal);
 
-sub sound { 'moooo' }
+use Moose;
+use namespace::autoclean;
+
+extends 'Animal';
+
+has 'sound' => ( is => 'ro', default => 'mooooo' );
+
+__PACKAGE__->meta->make_immutable;
 
 1;
