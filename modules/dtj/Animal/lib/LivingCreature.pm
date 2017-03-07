@@ -4,6 +4,13 @@ use 5.006;
 use strict;
 use warnings;
 
+use Moose::Role;
+use namespace::autoclean;
+
+requires qw( sound );
+
+has 'name' => ( is => 'rw', default => 'Joe' );
+
 =head1 NAME
 
 LivingCreature - The great new LivingCreature!
@@ -17,12 +24,8 @@ Version 0.01
 our $VERSION = '0.01';
 
 sub speak {
-  my $class = shift;
-  print "a $class goes ", $class->sound, "!\n";
-}
-
-sub sound {
-  die 'You have to define sound() in a subclass'
+  my $self = shift;
+  print ref($self), " goes ", $self->sound, "\n";
 }
 
 =head1 SYNOPSIS

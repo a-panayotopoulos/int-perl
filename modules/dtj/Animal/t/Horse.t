@@ -7,4 +7,4 @@ use Test::More tests => 2;
 
 BEGIN { use_ok( 'Horse' ) }
 
-is( Horse->sound, 'neigh', 'No dodgy acts of nature here' );
+is( Horse->new->sound, 'neigh', 'No dodgy acts of nature here' );

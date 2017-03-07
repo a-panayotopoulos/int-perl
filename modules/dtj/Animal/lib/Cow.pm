@@ -4,9 +4,12 @@ use 5.006;
 use strict;
 use warnings;
 
-use parent qw(Animal);
+use Moose;
+use namespace::autoclean;
 
-sub sound { 'moooo' }
+has 'sound' => ( is => 'ro', default => 'moooo' );
+
+with 'Animal';
 
 =head1 NAME
 
