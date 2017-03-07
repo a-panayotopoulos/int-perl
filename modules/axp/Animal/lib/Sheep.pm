@@ -3,8 +3,11 @@ package Sheep;
 use 5.006;
 use strict;
 use warnings;
-use parent qw( Animal );
-use Carp qw( croak );
+
+use Moose;
+use namespace::autoclean;
+
+with 'Animal';
 
 =head1 NAME
 
@@ -45,9 +48,10 @@ The default colour for this type of animal.
 =cut
 
 sub default_colour {
-	ref ( my $class = shift ) and croak "Static method used as instance call";
 	return "white";
 }
+
+before 'default_colour' => $LivingCreature::__static_check;
 
 =head1 AUTHOR
 
@@ -130,5 +134,7 @@ CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
+
+__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
 
 1; # End of Sheep

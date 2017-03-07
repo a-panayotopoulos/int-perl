@@ -1,18 +1,19 @@
-package Cow;
+package Racer;
 
 use 5.006;
 use strict;
 use warnings;
 
 use Carp qw( croak );
-use Moose;
+use File::Slurp qw ( read_file write_file );
+use JSON;
+use Moose::Role;
+use Moose::Meta::Attribute::Native::Trait::Counter;
 use namespace::autoclean;
-
-with 'Animal';
 
 =head1 NAME
 
-Cow - The cow goes moooo
+Racer - A generic thing that can generically race
 
 =head1 VERSION
 
@@ -24,35 +25,126 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Don't have a cow, man.
-
-    use Cow;
-
-    Cow->speak;
-
-=head1 EXPORT
+Have you seen my fabulous racing snails? I use ladybirds as jockeys.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sound
+=head2 wins
+
+Number of wins
+
+=head2 won
+
+Racer won a race! :)
 
 =cut
 
-sub sound {
-	return 'moooo';
-}
+has 'wins' => (
+	traits => ['Counter'],
+	is => 'ro',
+	isa => 'Int',
+	default => 0,
+	handles => { won => 'inc' } );
 
-=head2 default_colour
+=head2 places
 
-The default colour for this type of animal.
+Number of places
+
+=head2 placed
+
+Racer placed in a race! :]
 
 =cut
 
-sub default_colour {
-	return "white and black";
+has 'places' => (
+	traits => ['Counter'],
+	is => 'ro',
+	isa => 'Int',
+	default => 0,
+	handles => { placed => 'inc' } );
+
+=head2 shows
+
+Number of shows
+
+=head2 showed
+
+Racer showed in a race. :|
+
+=cut
+
+has 'shows' => (
+	traits => ['Counter'],
+	is => 'ro',
+	isa => 'Int',
+	default => 0,
+	handles => { showed => 'inc' } );
+
+=head2 losses
+
+Number of losses
+
+=head2 lost
+
+Racer lost a race. :(
+
+=cut
+
+has 'losses' => (
+	traits => ['Counter'],
+	is => 'ro',
+	isa => 'Int',
+	default => 0,
+	handles => { lost => 'inc' } );
+
+=head2 standings
+
+Show some standings for this racer
+
+=cut
+
+sub standings {
+	my $self = shift;
+	return join ', ', map "$self->{$_} $_", qw( wins places shows losses );
 }
 
-before 'default_colour' => $LivingCreature::__static_check;
+=head2 tie
+
+Tie the racer's standings to a particular file
+
+=cut
+
+sub tie {
+	my $self = shift;
+	my $stfile = shift or croak "Standings file needed";
+
+	if ( $self->{wins} || $self->{places} || $self->{shows} || $self->{losses} ) {
+		croak "Can't tie; standings already altered";
+	}
+
+	if ( -e $stfile ) {
+		my $data = from_json read_file $stfile;
+		$self->{$_} = $data->{$_} foreach qw( wins places shows losses );
+	}
+
+	$self->{stfile} = $stfile;
+	return $self;
+}
+
+sub DESTROY {
+	ref ( my $self = shift ) or croak "Instance variable needed";
+	$self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
+
+	if ( $self->{stfile} ) {
+		my %data = map { $_ => $self->{$_} } qw( wins places shows losses );
+		write_file $self->{stfile}, to_json \%data;
+	}
+
+	return 1;
+}
+
+before [ qw( wins won places placed shows showed losses lost standings tie ) ]
+	=> $LivingCreature::__instance_check;
 
 =head1 AUTHOR
 
@@ -68,7 +160,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Cow
+    perldoc Racer
 
 You can also look for information at:
 
@@ -136,6 +228,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
-
-1; # End of Cow
+1; # End of Racer

@@ -2,7 +2,7 @@
 use 5.006;
 use strict;
 use warnings;
-use Test::More 0.62 tests => 19;
+use Test::More 0.62 tests => 16;
 use Test::Output;
 use Test::Fatal;
 
@@ -12,16 +12,14 @@ BEGIN {
 
 diag( "Testing Animal $Animal::VERSION, Perl $], $^X" );
 
-# subroutines are defined
-ok( defined &Animal::named, 'Animal::named is defined' );
-ok( defined &Animal::name, 'Animal::name is defined' );
-ok( defined &Animal::colour, 'Animal::colour is defined' );
-ok( defined &Animal::default_colour, 'Animal::default_colour is defined' );
-
 # define a subclass which implements necessary subroutines
 {
 	package Muppet;
-	use parent qw( Animal );
+
+	use Moose;
+	use namespace::autoclean;
+	with 'Animal';
+
 	sub default_colour {
 		return "pink";
 	}
@@ -30,11 +28,14 @@ ok( defined &Animal::default_colour, 'Animal::default_colour is defined' );
 	}
 }
 
-# Test 'named' (a constructor)
-my $muppet = Muppet->named( 'Beaker' );
+# Name and colour are now defined
+ok( defined &Muppet::name, 'Muppet::name is defined' );
+ok( defined &Muppet::colour, 'Muppet::colour is defined' );
+
+# Test construction
+my $muppet = Muppet->new( name => 'Beaker' );
 is( ref( $muppet ), 'Muppet', "Created a Muppet instance" );
-like( exception { Muppet->named }, qr/^Need to provide a name/, 'named() without params' );
-like( exception { $muppet->named }, qr/^Static constructor used as instance call/, 'try to call named() on an instance' );
+like( exception { Muppet->new }, qr/^Attribute \(name\) is required/, 'new() without params' );
 
 # Test 'name' (an instance getter/setter)
 like( exception { Muppet->name }, qr/^Instance variable needed/, 'try to get a name statically' );
@@ -51,7 +52,8 @@ $muppet->colour( 'brown' );
 is( $muppet->colour, 'brown', 'Colour has been set' );
 
 # Test default_colour
-like( exception { Animal->default_colour }, qr/^You have to define default_colour\(\) in a subclass/,
+like( exception { Animal->default_colour },
+	qr/^Can't locate object method "default_colour" via package "Animal"/,
 	'Default colour is undefined for generic animal' );
 
 # Test 'speak'

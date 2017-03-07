@@ -3,8 +3,12 @@ package Animal;
 use 5.006;
 use strict;
 use warnings;
-use parent qw( LivingCreature );
+
 use Carp qw( croak );
+use Moose::Role;
+use namespace::autoclean;
+
+with 'LivingCreature';
 
 =head1 NAME
 
@@ -22,22 +26,7 @@ our $VERSION = '0.01';
 
 Don't use this class directly; instead instantiate subclasses of it.
 
-=head1 EXPORT
-
 =head1 SUBROUTINES/METHODS
-
-=head2 named
-
-Construct a new Animal, with the given name
-
-=cut
-
-sub named {
-	ref ( my $class = shift ) and croak "Static constructor used as instance call";
-	my $name = shift or croak "Need to provide a name";
-	my $self = { Name => $name, Colour => $class->default_colour };
-	return bless $self, $class;
-}
 
 =head2 name
 
@@ -45,16 +34,9 @@ Get or set the Animal's name
 
 =cut
 
-sub name {
-	ref ( my $self = shift ) or croak "Instance variable needed";
-	if ( @_ ) {
-		$self->{ Name } = shift;
-		return $self;
-	}
-	else {
-		return $self->{ Name };
-	}
-}
+has 'name' => ( is => 'rw', required => 1 );
+
+before 'name' => $LivingCreature::__instance_check;
 
 =head2 colour
 
@@ -62,18 +44,21 @@ Get or set the Animal's colour
 
 =cut
 
-sub colour {
+has 'colour' => ( is => 'rw', default => sub {
+	return ref ( shift )->default_colour;
+});
+
+around 'colour' => sub {
+	my $orig = shift;
 	my $either = shift;
 	
-	if ( @_ ) {
-		ref ( $either ) or croak "Instance variable needed";
-		$either->{ Colour } = shift;
-		return $either;
+	if ( !ref ( $either ) ) {
+		croak "Instance variable needed" if shift;
+		return $either->default_colour;
 	}
-	else {
-		return ref ( $either ) ? $either->{ Colour } : $either->default_colour();
-	}
-}
+	
+	return $either->$orig( @_ );
+};
 
 =head2 default_colour
 
@@ -81,9 +66,7 @@ The default colour for this type of animal.
 
 =cut
 
-sub default_colour {
-	croak 'You have to define default_colour() in a subclass';
-}
+requires 'default_colour';
 
 =head2 speak
 
@@ -91,7 +74,7 @@ sub default_colour {
 
 sub speak {
 	my $either = shift;
-	ref ( $either ) ? print $either->name . " goes " . $either->sound . "!\n" : $either->SUPER::speak();
+	ref ( $either ) ? print $either->name . " goes " . $either->sound . "!\n" : $either->LivingCreature::speak();
 }
 
 =head1 AUTHOR
@@ -175,7 +158,6 @@ YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
 CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 
 =cut
 

@@ -3,8 +3,11 @@ package Person;
 use 5.006;
 use strict;
 use warnings;
-use parent qw( LivingCreature );
-use Carp qw( croak );
+
+use Moose;
+use namespace::autoclean;
+
+with 'LivingCreature';
 
 =head1 NAME
 
@@ -36,10 +39,11 @@ People are overratted.
 =cut
 
 sub speak {
-	ref ( my $class = shift ) and croak "Static method used as instance call";
-	my $say_what = shift;
-	$say_what ? print "a $class says '$say_what'\n" : $class->SUPER::speak();
+	my ( $class, $say_what ) = @_;
+	$say_what ? print "a $class says '$say_what'\n" : $class->LivingCreature::speak();
 }
+
+before 'speak' => $LivingCreature::__static_check;
 
 =head2 sound
 
@@ -129,7 +133,8 @@ CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 =cut
+
+__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
 
 1; # End of Person

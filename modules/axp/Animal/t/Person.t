@@ -27,4 +27,4 @@ is( $axp->sound(), "humm-dee-humm", "axp says humm-dee-humm" );
 stdout_is { Person->speak() } "a Person goes humm-dee-humm!\n", "speak() without params";
 stdout_is { Person->speak( 'meh' ) } "a Person says 'meh'\n", "speak() with params";
 stdout_is { Person->speak( '' ) } "a Person goes humm-dee-humm!\n", "speak() with falsey string";
-like( exception { $axp->speak() }, qr/^Static method used as instance call/, 'speak is static' );
+like( exception { $axp->speak() }, qr/^Class method used as instance call/, 'speak is static' );

@@ -3,10 +3,12 @@ package RaceHorse;
 use 5.006;
 use strict;
 use warnings;
-use parent qw( Horse );
-use Carp qw( croak );
-use File::Slurp qw ( read_file write_file );
-use JSON;
+
+use Moose;
+use namespace::autoclean;
+
+extends 'Horse';
+with 'Racer';
 
 =head1 NAME
 
@@ -23,115 +25,6 @@ our $VERSION = '0.01';
 =head1 SYNOPSIS
 
 If I had a racehorse, I'd call it Nonsequituriat... because it doesn't follow.
-
-=head1 EXPORT
-
-=head1 SUBROUTINES/METHODS
-
-=head2 named
-
-Construct a new RaceHorse, with the given name
-
-=cut
-
-sub named {
-	my $self = shift->SUPER::named( @_ );
-	$self->{ $_ } = 0 for qw( wins places shows losses );
-	return $self;
-}
-
-# Used for won, placed, showed and lost
-my $incr = sub {
-	ref ( my $self = shift ) or croak "Instance variable needed";
-	$self->{ shift() }++;
-	return 1;
-};
-
-=head2 won
-
-RaceHorse won a race! :)
-
-=cut
-
-sub won {
-	return $incr->( shift, 'wins' );
-}
-
-=head2 placed
-
-RaceHorse placed in a race! :]
-
-=cut
-
-sub placed {
-	return $incr->( shift, 'places' );
-}
-
-=head2 showed
-
-RaceHorse showed in a race. :|
-
-=cut
-
-sub showed {
-	return $incr->( shift, 'shows' );
-}
-
-=head2 lost
-
-RaceHorse lost a race. :(
-
-=cut
-
-sub lost {
-	return $incr->( shift, 'losses' );
-}
-
-=head2 standings
-
-Show some standings for this racehorse
-
-=cut
-
-sub standings {
-	ref ( my $self = shift ) or croak "Instance variable needed";
-	return join ', ', map "$self->{$_} $_", qw( wins places shows losses );
-}
-
-=head2 tie
-
-Tie the horse's standings to a particular file
-
-=cut
-
-sub tie {
-	ref ( my $self = shift ) or croak "Instance variable needed";
-	my $stfile = shift or croak "Standings file needed";
-
-	if ( $self->{wins} || $self->{places} || $self->{shows} || $self->{losses} ) {
-		croak "Can't tie; standings already altered";
-	}
-
-	if ( -e $stfile ) {
-		my $data = from_json read_file $stfile;
-		$self->{$_} = $data->{$_} foreach qw( wins places shows losses );
-	}
-
-	$self->{stfile} = $stfile;
-	return $self;
-}
-
-sub DESTROY {
-	ref ( my $self = shift ) or croak "Instance variable needed";
-	$self->SUPER::DESTROY if $self->can( 'SUPER::DESTROY' );
-
-	if ( $self->{stfile} ) {
-		my %data = map { $_ => $self->{$_} } qw( wins places shows losses );
-		write_file $self->{stfile}, to_json \%data;
-	}
-
-	return 1;
-}
 
 =head1 AUTHOR
 
@@ -214,5 +107,7 @@ CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
+
+__PACKAGE__->meta->make_immutable( inline_constructor => 0, inline_destructor => 0 );
 
 1; # End of RaceHorse
