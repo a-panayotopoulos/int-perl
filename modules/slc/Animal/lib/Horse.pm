@@ -1,6 +1,11 @@
 package Horse;
-use parent qw(Animal);
+use Moose;
+use namespace::autoclean;
 
-sub sound { 'neigh' }
+extends 'Animal';
+
+has 'sound' => ( is => 'ro', default => 'neigh' );
+
+__PACKAGE__->meta->make_immutable;
 
 1;

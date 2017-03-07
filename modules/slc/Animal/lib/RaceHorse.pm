@@ -1,35 +1,32 @@
 package RaceHorse;
+use Moose;
+use namespace::autoclean;
 
-use parent qw(Horse);
+extends 'Horse';
 
 use Storable;
 
 use constant FILENAME => 'all_stats.txt';
 
-## extend parent constructor:
-sub named {
-  my $self = shift->SUPER::named( @_ );
-  $self->{stat_name} = $_[0] // 'Unknown Racehorse';
-  
-  $self->load_stats();
-  
-  $self->{all_time_stats}->{$_} //= 0 for qw(wins places shows losses);
-  $self->{$_} = 0 for qw(wins places shows losses);
-  $self;
+has 'name'  => ( is => 'rw', required => 1 );
+has $_ => (is => 'rw', default => 0)
+  foreach qw(wins places shows losses);
+has all_time_stats => (is => 'rw');
+
+sub BUILD {
+    my $self = shift;
+    $self->load_stats();
 }
 
-sub won { shift->{wins}++; }
-
-sub placed { shift->{places}++; }
-
-sub showed { shift->{shows}++; }
-
-sub lost { shift->{losses}++; }
+sub won    { my $self = shift; $self->wins($self->wins + 1) }
+sub placed { my $self = shift; $self->places($self->places + 1) }
+sub showed { my $self = shift; $self->shows($self->shows + 1) }
+sub lost   { my $self = shift; $self->losses($self->losses + 1) }
 
 sub standings {
   my $self = shift;
   $self->load_stats();
-  join ', ', map { ( $self->{$_} + $self->{all_time_stats}->{$_} ) . " $_" } qw(wins places shows losses);
+  join ', ', map { ( $self->$_ + $self->all_time_stats()->{$_} ) . " $_" } qw(wins places shows losses);
 }
 
 sub load_stats {
@@ -40,8 +37,10 @@ sub load_stats {
     }
     
     my $all_statistics = retrieve( FILENAME );
-    $all_statistics->{$self->{stat_name}} //= {};
-    $self->{all_time_stats} = $all_statistics->{$self->{stat_name}};
+    $all_statistics->{$self->name()} //= {};
+    my $horse_stats = $all_statistics->{$self->name()};
+    $horse_stats->{$_} //= 0 for qw(wins places shows losses);
+    $self->all_time_stats( $horse_stats );
 }
 
 sub all_time_standings {
@@ -52,13 +51,13 @@ sub all_time_standings {
     printf( "%-20s %s wins, %s places, %s shows, %s losses\n", $_->{name}, $_->{details}{wins}, $_->{details}{places}, $_->{details}{shows}, $_->{details}{losses} ) foreach ( @ordered );
 }
 
-sub DESTROY {
+sub DEMOLISH {
     my $self = shift;
     my $all_statistics = retrieve( FILENAME );
-    $all_statistics->{$self->{stat_name}}->{$_} += $self->{$_} for qw(wins places shows losses);
+    $all_statistics->{$self->name}->{$_} += $self->$_ for qw(wins places shows losses);
     store( $all_statistics, FILENAME );
 }
 
-
+__PACKAGE__->meta->make_immutable;
 
 1;

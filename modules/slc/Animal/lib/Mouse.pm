@@ -1,12 +1,16 @@
 package Mouse;
-use parent qw(Animal);
 
-sub sound { 'squeak' }
+use Moose;
+use namespace::autoclean;
 
-sub speak {
-  my $class = shift;
-  $class->SUPER::speak(@_); # tell it where to start
+extends 'Animal';
+
+has 'sound' => ( is => 'ro', default => 'squeak' );
+
+after 'speak' => sub {
   print "[but you can barely hear it!]\n";
-}
+};
+
+__PACKAGE__->meta->make_immutable;
 
 1;

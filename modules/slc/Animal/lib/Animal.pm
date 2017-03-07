@@ -1,12 +1,14 @@
 package Animal;
-use parent qw(LivingCreature);
+
+use Moose;
+use namespace::autoclean;
+
+extends 'LivingCreature';
 
 sub default_colour {
     return 'brown';
 }
 
-sub sound {
-  die 'You have to define sound() in a subclass'
-}
+__PACKAGE__->meta->make_immutable;
 
 1;

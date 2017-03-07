@@ -1,10 +1,14 @@
 package Sheep;
-use parent qw(Animal);
+
+use Moose;
+use namespace::autoclean;
+
+extends 'Animal';
+
+has 'sound' => ( is => 'ro', default => 'baaaah' );
 
 sub default_colour {
     return 'white';
 }
-
-sub sound { 'baaaah' }
 
 1;
