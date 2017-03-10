@@ -4,9 +4,14 @@ use 5.006;
 use strict;
 use warnings;
 
+use Exporter qw( import );
+use vars qw( @EXPORT $VERSION );
+
+use Test::Builder;
+
 =head1 NAME
 
-Test::My::List::Util - The great new Test::My::List::Util!
+Test::My::List::Util - Tests with summing powers
 
 =head1 VERSION
 
@@ -16,37 +21,41 @@ Version 0.01
 
 our $VERSION = '0.01';
 
+my $Test = Test::Builder->new();
+@EXPORT = qw( sum_ok );
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
+Test library which can sum up things
 
     use Test::My::List::Util;
 
-    my $foo = Test::My::List::Util->new();
+	my $sum = sum( 2, 2 );
+    sum_ok( $sum, 4, 'The sums match' );
     ...
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sum_ok
+
+A test function. First parameter is the test value, next is the sum value,
+and then a final optional test description
 
 =cut
 
-sub function1 {
-}
+sub sum_ok {
+	my ( $actual, $expected, $desc ) = @_;
+	$desc //= 'The sum didn\'t match';
 
-=head2 function2
-
-=cut
-
-sub function2 {
+	if ( $actual == $expected ) {
+		$Test->ok( 1 , $desc );
+	}
+	else {
+		$Test->diag( "Expected: $expected, Actual $actual." );
+		$Test->ok( 0 , $desc );
+	}
 }
 
 =head1 AUTHOR
@@ -59,15 +68,11 @@ Please report any bugs or feature requests to C<bug-test-my-list-util at rt.cpan
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Test-My-List-Util>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Test::My::List::Util
-
 
 You can also look for information at:
 
@@ -91,9 +96,7 @@ L<http://search.cpan.org/dist/Test-My-List-Util/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -134,7 +137,6 @@ YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
 CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 
 =cut
 
