@@ -47,7 +47,7 @@ and then a final optional test description
 
 sub sum_ok {
 	my ( $actual, $expected, $desc ) = @_;
-	$desc //= 'The sum didn\'t match';
+	$desc //= 'Testing summed values';
 
 	if ( $actual == $expected ) {
 		$Test->ok( 1 , $desc );
