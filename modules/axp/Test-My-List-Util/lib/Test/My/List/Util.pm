@@ -8,6 +8,7 @@ use Exporter qw( import );
 use vars qw( @EXPORT $VERSION );
 
 use Test::Builder;
+use Scalar::Util qw( looks_like_number );
 
 =head1 NAME
 
@@ -46,16 +47,24 @@ and then a final optional test description
 =cut
 
 sub sum_ok {
-	my ( $actual, $expected, $desc ) = @_;
-	$desc //= 'Testing summed values';
+  my ( $actual, $expected, $desc ) = @_;
+  $desc //= 'Testing summed values';
 
-	if ( $actual == $expected ) {
-		$Test->ok( 1 , $desc );
-	}
-	else {
-		$Test->diag( "Expected: $expected, Actual $actual." );
-		$Test->ok( 0 , $desc );
-	}
+  if ( !looks_like_number( $actual ) ) {
+    $Test->diag( "Actual value <$actual> doesn't look like a number." );
+    $Test->ok( 0, $desc );
+  }
+  elsif ( !looks_like_number( $expected ) ) {
+    $Test->diag( "Expected value <$expected> doesn't look like a number." );
+    $Test->ok( 0, $desc );
+  }
+  elsif ( $actual == $expected ) {
+    $Test->ok( 1 , $desc );
+  }
+  else {
+    $Test->diag( "Expected: $expected, Actual $actual." );
+    $Test->ok( 0 , $desc );
+  }
 }
 
 =head1 AUTHOR
