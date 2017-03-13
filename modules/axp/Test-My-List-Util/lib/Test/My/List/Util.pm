@@ -31,8 +31,7 @@ Test library which can sum up things
 
     use Test::My::List::Util;
 
-	my $sum = sum( 2, 2 );
-    sum_ok( $sum, 4, 'The sums match' );
+    sum_ok( 2, 4.2, 5, 7.1, 18.3, 'The sums match' );
     ...
 
 =head1 EXPORT
@@ -47,23 +46,42 @@ and then a final optional test description
 =cut
 
 sub sum_ok {
-  my ( $actual, $expected, $desc ) = @_;
-  $desc //= 'Testing summed values';
+  if ( @_ < 2 ) {
+    $Test->diag( "Need to give an expected value and a test name!" );
+    return $Test->ok( 0 );
+  }
 
-  if ( !looks_like_number( $actual ) ) {
-    $Test->diag( "Actual value <$actual> doesn't look like a number." );
-    $Test->ok( 0, $desc );
+  my $desc = pop @_;
+
+  if ( looks_like_number( $desc ) ) {
+    $Test->diag( "Test description looks like a number. Probably a mistake. Failing." );
+    return $Test->ok( 0, "A test called <$desc>?" );
   }
-  elsif ( !looks_like_number( $expected ) ) {
+
+  my $expected = pop @_;
+
+  if ( !looks_like_number( $expected ) ) {
     $Test->diag( "Expected value <$expected> doesn't look like a number." );
-    $Test->ok( 0, $desc );
+    return $Test->ok( 0, $desc );
   }
-  elsif ( $actual == $expected ) {
-    $Test->ok( 1 , $desc );
+
+  my $actual = 0;
+
+  foreach my $val ( @_ ) {
+    if ( !looks_like_number( $val ) ) {
+      $Test->diag( "Actual value <$val> doesn't look like a number." );
+      return $Test->ok( 0, $desc );
+    }
+
+    $actual += $val;
+  }
+
+  if ( $actual == $expected ) {
+    return $Test->ok( 1 , $desc );
   }
   else {
     $Test->diag( "Expected: $expected, Actual $actual." );
-    $Test->ok( 0 , $desc );
+    return $Test->ok( 0 , $desc );
   }
 }
 
