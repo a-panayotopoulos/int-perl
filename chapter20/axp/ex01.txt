@@ -1,0 +1,17 @@
+#####################
+# Output in Windows #
+#####################
+
+1..3
+ok 1 - C:\windows\system32\drivers\etc\hosts exists
+ok 2 # skip Not running in Linux
+ok 3 - File testing performed (OS = MSWin32)
+
+#####################
+# Output in Linux   #
+#####################
+
+1..3
+ok 1 # skip Not running in Windows
+ok 2 - /etc/hosts exists
+ok 3 - File testing performed (OS = linux)
