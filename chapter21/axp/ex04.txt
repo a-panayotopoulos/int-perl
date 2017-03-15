@@ -1,0 +1,62 @@
+It doesn't reject it! Proof below:
+
+---------------------------------------------------------------------
+
+The uploaded file
+
+    Acme-AXP-Utils-0.04.tar.gz
+
+has entered CPAN as
+
+  file: $CPAN/authors/id/A/AX/AXP/Acme-AXP-Utils-0.04.tar.gz
+  size: 7597 bytes
+   md5: 5893237d47c6de5bb2a18eaeaa7f091c
+  sha1: 06fffbb276f424ff4381798c0e46b934b61d029b
+
+CPAN Testers will start reporting results in an hour or so:
+
+  <LINK>
+
+Request entered by: AXP (Alex Panayotopoulos)
+Request entered on: Wed, 15 Mar 2017 17:15:22 GMT
+Request completed:  Wed, 15 Mar 2017 17:15:45 GMT
+
+Thanks,
+-- 
+paused, v1049
+
+---------------------------------------------------------------------
+
+The following report has been written by the PAUSE namespace indexer.
+Please contact modules@perl.org if there are any open questions.
+
+  User: AXP (Alex Panayotopoulos)
+  Distribution file: Acme-AXP-Utils-0.04.tar.gz
+  Number of files: 16
+  *.pm files: 2
+  README: Acme-AXP-Utils-0.04/README
+  META-File: Acme-AXP-Utils-0.04/META.json
+  META-Parser: Parse::CPAN::Meta 1.4414
+  META-driven index: yes
+  Timestamp of file: Wed Mar 15 17:15:44 2017 UTC
+  Time of this run: Wed Mar 15 17:17:16 2017 UTC
+
+Status of this distro: OK
+=========================
+
+The following packages (grouped by status) have been found in the distro:
+
+Status: Successfully indexed
+============================
+
+     module : Acme::AXP::Utils
+     version: 0.04
+     in file: lib/Acme/AXP/Utils.pm
+     status : indexed
+
+     module : Tie::Cycle
+     version: 1.223
+     in file: lib/Tie/Cycle.pm
+     status : indexed
+
+__END__
