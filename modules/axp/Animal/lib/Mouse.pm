@@ -11,7 +11,7 @@ with 'Animal';
 
 =head1 NAME
 
-Mouse - The mouse goes ˢᑫᵘᵉᵃᵏ
+Mouse - The mouse goes squeak
 
 =head1 VERSION
 
