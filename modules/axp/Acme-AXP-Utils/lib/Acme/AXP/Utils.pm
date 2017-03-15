@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-Acme::AXP::Utils - The great new Acme::AXP::Utils!
+Acme::AXP::Utils - Exercises for Intermediate Perl, 2nd Edition, Chapter 21
 
 =head1 VERSION
 
@@ -16,37 +16,24 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Acme::AXP::Utils;
-
-    my $foo = Acme::AXP::Utils->new();
-    ...
+I'm pretty sure that the naming scheme for this module breaks the rules that brian d foy himself
+indicated in https://pause.perl.org/pause/query?ACTION=pause_namingmodules, but I'm only following
+instructions.
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 sum
 
 =cut
 
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
+sub sum {
+	my $tot = 0;
+	$tot += $_ foreach ( @_ );
+	return $tot;
 }
 
 =head1 AUTHOR
@@ -59,15 +46,11 @@ Please report any bugs or feature requests to C<bug-acme-axp-utils at rt.cpan.or
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Acme-AXP-Utils>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Acme::AXP::Utils
-
 
 You can also look for information at:
 
@@ -91,9 +74,7 @@ L<http://search.cpan.org/dist/Acme-AXP-Utils/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -134,7 +115,6 @@ YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
 CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
 CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 
 =cut
 
