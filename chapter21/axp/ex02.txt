@@ -1,0 +1,25 @@
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Creating Makefile.PL
+Created META.yml and META.json
+Creating Animal-0.01
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'Animal' version '0.01'
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Building Animal
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+t\00-load.t ....... 1/9 # Testing Animal package contents 0.01, Perl 5.016003, C:\Perl64\bin\perl.exe
+t\00-load.t ....... ok
+t\manifest.t ...... skipped: Test::CheckManifest 0.9 required
+t\pod-coverage.t .. skipped: Test::Pod::Coverage 1.08 required for testing POD coverage
+t\pod.t ........... ok
+All tests successful.
+Files=4, Tests=18,  1 wallclock secs ( 0.08 usr +  0.03 sys =  0.11 CPU)
+Result: PASS
