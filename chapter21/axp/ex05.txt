@@ -1,0 +1,126 @@
+This also succeeds where it should have failed! Proof of disttest,
+and then of the emails received, below:
+
+---------------------------------------------------------------------
+
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Creating Makefile.PL
+Created META.yml and META.json
+Creating Acme-AXP-Utils-0.05
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'Acme-AXP-Utils' version '0.05'
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Building Acme-AXP-Utils
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+Set up gcc environment - gcc.exe (rubenvb-4.5.4) 4.5.4
+t\00-load.t ....... 1/1 # Testing Acme::AXP::Utils 0.05, Perl 5.016003, C:\Perl64\bin\perl.exe
+t\00-load.t ....... ok
+t\Utils.t ......... 1/10
+#   Failed test 'Sum positive and negative integers'
+#   at t\Utils.t line 17.
+#          got: '28'
+#     expected: '-4'
+
+#   Failed test 'Sum decimals'
+#   at t\Utils.t line 18.
+#          got: '-2.4'
+#     expected: '3.7'
+
+#   Failed test 'Numbers as strings'
+#   at t\Utils.t line 19.
+#          got: '42'
+#     expected: '13'
+
+#   Failed test 'Zero item list'
+#   at t\Utils.t line 21.
+#          got: '1'
+#     expected: '0'
+
+#   Failed test 'Ignore characters'
+#   at t\Utils.t line 22.
+#          got: '0'
+#     expected: '9'
+
+#   Failed test 'Non-numeric warning'
+#   at t\Utils.t line 24.
+# found warning: Argument "y" isn't numeric in multiplication (*) at C:\Users\E047028\wsneon\int-perl\modules\axp\Acme-AXP-Utils\Acme-AXP-Utils-0.05\blib\lib/Acme/AXP/Utils.pm line 37.
+# expected to find warning: (?^:^Argument "y" isn't numeric in addition)
+# Looks like you failed 6 tests of 10.
+t\Utils.t ......... Dubious, test returned 6 (wstat 1536, 0x600)
+Failed 6/10 subtests
+t\manifest.t ...... skipped: Test::CheckManifest 0.9 required
+t\pod-coverage.t .. skipped: Test::Pod::Coverage 1.08 required for testing POD coverage
+t\pod.t ........... ok
+
+Test Summary Report
+-------------------
+t\Utils.t       (Wstat: 1536 Tests: 10 Failed: 6)
+  Failed tests:  4-6, 8-10
+  Non-zero exit status: 6
+Files=5, Tests=12,  0 wallclock secs ( 0.03 usr +  0.00 sys =  0.03 CPU)
+Result: FAIL
+Failed 1/5 test programs. 6/12 subtests failed.
+Error executing 'Build test' in dist directory at C:/Perl64/site/lib/Module/Build/Base.pm line 4075.
+
+---------------------------------------------------------------------
+
+The uploaded file
+
+    Acme-AXP-Utils-0.05.tar.gz
+
+has entered CPAN as
+
+  file: $CPAN/authors/id/A/AX/AXP/Acme-AXP-Utils-0.05.tar.gz
+  size: 6085 bytes
+   md5: 1773576b30cc0161cc087a411034d71a
+  sha1: 2600bb04ede8989e031ae89a21e61b6349b7bb61
+
+CPAN Testers will start reporting results in an hour or so:
+
+  <LINK>
+
+Request entered by: AXP (Alex Panayotopoulos)
+Request entered on: Wed, 15 Mar 2017 17:28:29 GMT
+Request completed:  Wed, 15 Mar 2017 17:28:39 GMT
+
+Thanks,
+-- 
+paused, v1049
+
+---------------------------------------------------------------------
+
+The following report has been written by the PAUSE namespace indexer.
+Please contact modules@perl.org if there are any open questions.
+
+  User: AXP (Alex Panayotopoulos)
+  Distribution file: Acme-AXP-Utils-0.05.tar.gz
+  Number of files: 15
+  *.pm files: 1
+  README: Acme-AXP-Utils-0.05/README
+  META-File: Acme-AXP-Utils-0.05/META.json
+  META-Parser: Parse::CPAN::Meta 1.4414
+  META-driven index: yes
+  Timestamp of file: Wed Mar 15 17:28:38 2017 UTC
+  Time of this run: Wed Mar 15 17:30:09 2017 UTC
+
+Status of this distro: OK
+=========================
+
+The following packages (grouped by status) have been found in the distro:
+
+Status: Successfully indexed
+============================
+
+     module : Acme::AXP::Utils
+     version: 0.05
+     in file: lib/Acme/AXP/Utils.pm
+     status : indexed
+
+__END__

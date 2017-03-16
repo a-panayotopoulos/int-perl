@@ -1,17 +1,12 @@
-package Mouse;
+package Acme::AXP::Utils;
 
 use 5.006;
 use strict;
 use warnings;
 
-use Moose;
-use namespace::autoclean;
-
-with 'Animal';
-
 =head1 NAME
 
-Mouse - The mouse goes squeak
+Acme::AXP::Utils - Exercises for Intermediate Perl, 2nd Edition, Chapter 21
 
 =head1 VERSION
 
@@ -23,61 +18,39 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-There's a moose loose, aboot this hoose.
-
-    use Mouse;
-
-    Mouse->speak;
+I'm pretty sure that the naming scheme for this module breaks the rules that brian d foy himself
+indicated in https://pause.perl.org/pause/query?ACTION=pause_namingmodules, but I'm only following
+instructions.
 
 =head1 EXPORT
 
 =head1 SUBROUTINES/METHODS
 
-=head2 sound
+=head2 sum
 
 =cut
 
-sub sound {
-	return 'squeak';
+sub sum {
+	my $tot = 0;
+	$tot += $_ foreach ( @_ );
+	return $tot;
 }
-
-=head2 speak
-
-=cut
-
-sub speak {
-	my $either = shift;
-	$either->Animal::speak( @_ );
-	print "[but you can barely hear it!]\n";
-}
-
-=head2 default_colour
-
-The default colour for this type of animal.
-
-=cut
-
-sub default_colour {
-	return "grey";
-}
-
-before 'default_colour' => $LivingCreature::__static_check;
 
 =head1 AUTHOR
 
-Alex Panayotopoulos, C<< <alex.p at fake.com> >>
+Alex P, C<< <axp-pause at mailinator.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-animal at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Animal>.  I will be notified, and then you'll
+Please report any bugs or feature requests to C<bug-acme-axp-utils at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Acme-AXP-Utils>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Mouse
+    perldoc Acme::AXP::Utils
 
 You can also look for information at:
 
@@ -85,19 +58,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Animal>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Acme-AXP-Utils>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Animal>
+L<http://annocpan.org/dist/Acme-AXP-Utils>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Animal>
+L<http://cpanratings.perl.org/d/Acme-AXP-Utils>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/Animal/>
+L<http://search.cpan.org/dist/Acme-AXP-Utils/>
 
 =back
 
@@ -105,7 +78,7 @@ L<http://search.cpan.org/dist/Animal/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2016 Alex Panayotopoulos.
+Copyright 2017 Alex P.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
@@ -145,6 +118,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
-
-1; # End of Mouse
+1; # End of Acme::AXP::Utils
