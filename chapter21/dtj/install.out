@@ -1,0 +1,9 @@
+cpanm ACME::THEDANIEL::Utils
+
+! Finding ACME::THEDANIEL::Utils on cpanmetadb failed.
+--> Working on ACME::THEDANIEL::Utils
+Fetching http://cpan.metacpan.org/authors/id/T/TH/THEDANIEL/ACME-THEDANIEL-Utils-0.01.tar.gz ... OK
+Configuring ACME-THEDANIEL-Utils-0.01 ... OK
+Building and testing ACME-THEDANIEL-Utils-0.01 ... OK
+Successfully installed ACME-THEDANIEL-Utils-0.01
+1 distribution installed
