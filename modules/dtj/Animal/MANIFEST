@@ -6,14 +6,25 @@ lib/Horse.pm
 lib/LivingCreature.pm
 lib/Mouse.pm
 lib/Person.pm
+lib/RaceHorse.pm
 lib/Sheep.pm
 MANIFEST			This list of files
 README
 scripts/barnyard.pl
+scripts/chapter15.pl
+scripts/person.pl
+scripts/racehorse.pl
 t/00-load.t
+t/Animal.t
+t/Cow.t
+t/Horse.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+t/Sheep.t
 t/t
 t/xt
 xt/boilerplate.t
+Makefile.PL
+META.yml
+META.json
